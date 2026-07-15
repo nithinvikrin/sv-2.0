@@ -77,6 +77,9 @@ export default function Footer() {
           <p className="text-white/30 text-xs font-light">
             &copy; {currentYear} SV Walls &amp; Interiors. All Rights Reserved.
           </p>
+          <p className="text-white/30 text-xs font-light">
+            Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-light transition-colors font-medium">Vikrin pvt ltd</a>
+          </p>
           <div className="flex gap-6 text-white/30 text-xs font-light">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
