@@ -1,17 +1,32 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Play } from 'lucide-react';
+
+const IMAGES = [
+  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1617806118233-18e1db207f62?auto=format&fit=crop&w=1920&q=80"
+];
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
+  // Auto-scroll images every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % IMAGES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Parallax / Zoom effect on scroll
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.25]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
@@ -43,30 +58,26 @@ export default function Hero() {
       ref={containerRef} 
       className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-bgDark"
     >
-      {/* Background Video Layer */}
+      {/* Background Image Carousel Layer */}
       <motion.div 
-        style={{ scale: videoScale }}
+        style={{ scale: bgScale }}
         className="absolute inset-0 w-full h-full"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-brand-bgDark via-brand-bgDark/45 to-brand-bgDark/20 z-10" />
         <div className="absolute inset-0 bg-black/60 z-10" /> {/* Extra contrast Overlay */}
         
-        {/* We use a high quality loop showcasing high precision painting/printing and beautiful wall transformations */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1920&q=80"
-        >
-          {/* Public loop showing vertical printing/painting style animations */}
-          <source 
-            src="https://player.vimeo.com/external/494252666.hd.mp4?s=d0f04e84b8026117ebaa6dbf6dc83d9bc37f5d47&profile_id=172&oauth2_token_id=57447761" 
-            type="video/mp4" 
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentImageIndex}
+            src={IMAGES[currentImageIndex]}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+            alt="Hero Background"
           />
-          Your browser does not support the video tag.
-        </video>
+        </AnimatePresence>
       </motion.div>
 
       {/* Hero Content */}
