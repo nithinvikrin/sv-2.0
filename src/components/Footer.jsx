@@ -1,13 +1,12 @@
-import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // WhatsApp click handler
   const handleWhatsAppRedirect = () => {
-    // Replace with target business WhatsApp number
-    const phoneNumber = "61400000000"; // Example AU number
+    const phoneNumber = "61400000000";
     const message = encodeURIComponent("Hello SV Walls & Interiors! I'd like to get a quote for a vertical wall printing project.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
@@ -19,19 +18,35 @@ export default function Footer() {
           
           {/* Logo & Pitch */}
           <div className="md:col-span-4 flex flex-col items-start">
-            <img 
-              src="/images/logo.png" 
-              alt="SV Walls & Interiors" 
-              className="h-16 w-auto mb-6 object-contain filter drop-shadow-[0_0_12px_rgba(197,168,128,0.15)]"
-              style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3)" }}
-            />
+            <Link to="/">
+              <img 
+                src="/images/logo.png" 
+                alt="SV Walls & Interiors" 
+                className="h-16 w-auto mb-6 object-contain filter drop-shadow-[0_0_12px_rgba(212,175,55,0.15)]"
+                style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3)" }}
+              />
+            </Link>
             <p className="text-white/50 font-light text-sm leading-relaxed mb-6">
               Transforming your walls with premium vertical wall printing technology and bespoke luxury interior designs.
             </p>
           </div>
 
+          {/* Quick links */}
+          <div className="md:col-span-2 md:col-start-6">
+            <h4 className="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-6">
+              Navigation
+            </h4>
+            <ul className="space-y-3 text-sm font-light text-white/50">
+              <li><Link to="/" className="hover:text-brand-gold transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-brand-gold transition-colors">About Us</Link></li>
+              <li><Link to="/services" className="hover:text-brand-gold transition-colors">Services</Link></li>
+              <li><Link to="/gallery" className="hover:text-brand-gold transition-colors">Gallery</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-gold transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
           {/* Contact Details */}
-          <div className="md:col-span-4 md:col-start-6">
+          <div className="md:col-span-3">
             <h4 className="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-6">
               Get in Touch
             </h4>
@@ -50,26 +65,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Socials / Newsletter */}
-          <div className="md:col-span-4">
-            <h4 className="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-6">
-              Stay Connected
-            </h4>
-            <p className="text-white/50 font-light text-xs leading-relaxed mb-4">
-              Subscribe to get updates on our latest vertical wall printing designs and custom interior portfolios.
-            </p>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/60 w-full"
-              />
-              <button className="bg-brand-gold text-brand-charcoal px-4 py-2.5 rounded-xl hover:bg-brand-light transition-colors flex items-center justify-center">
-                <Send className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Legal bar */}
@@ -80,10 +75,6 @@ export default function Footer() {
           <p className="text-white/30 text-xs font-light">
             Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-light transition-colors font-medium">Vikrin pvt ltd</a>
           </p>
-          <div className="flex gap-6 text-white/30 text-xs font-light">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
 

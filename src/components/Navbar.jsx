@@ -1,39 +1,24 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Services', href: '#services' },
-  { name: 'Before & After', href: '#before-after' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'Get a Quote', href: '#quote' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      // Simple active link checking
-      const sections = navLinks.map(link => link.href.substring(1));
-      let currentSection = 'home';
-      
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            currentSection = section;
-            break;
-          }
-        }
-      }
-      setActiveSection(currentSection);
+      setIsScrolled(window.scrollY > 40);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -45,7 +30,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
           isScrolled 
             ? 'glass-navbar py-4 shadow-xl' 
@@ -54,49 +39,51 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo Brand */}
-          <a href="#home" className="flex items-center gap-3 group">
-            <div className="h-10 md:h-12 overflow-hidden">
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="h-10 md:h-12 overflow-hidden relative">
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls & Interiors" 
                 className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3)" }}
+                style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3) drop-shadow(0 0 8px rgba(212,175,55,0.2))" }}
               />
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
+              const isActive = location.pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  className="relative text-sm uppercase tracking-widest font-sans font-medium text-white/80 hover:text-white transition-colors py-2"
+                  to={link.href}
+                  className={`relative text-xs uppercase tracking-widest font-sans font-semibold transition-colors py-2 ${
+                    isActive ? 'text-brand-gold' : 'text-white/70 hover:text-white'
+                  }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold shadow-[0_0_8px_#D4AF37]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                </a>
+                </Link>
               );
             })}
           </div>
 
           {/* Call to Action button */}
           <div className="hidden lg:block">
-            <a
-              href="#quote"
-              className="btn-shine inline-flex items-center gap-2 px-6 py-2.5 border border-brand-gold/60 text-xs font-semibold uppercase tracking-widest text-brand-gold bg-brand-gold/5 hover:bg-brand-gold hover:text-brand-charcoal rounded-full transition-all duration-500"
+            <Link
+              to="/contact"
+              className="btn-shine btn-gold-glow inline-flex items-center gap-2 px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest rounded-full"
             >
               Get Free Quote
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger menu toggle */}
@@ -121,35 +108,45 @@ export default function Navbar() {
             className="fixed inset-0 top-[72px] bg-brand-bgDark/98 backdrop-blur-2xl z-30 lg:hidden flex flex-col p-8 border-t border-white/5"
           >
             <div className="flex flex-col gap-6 mt-12 items-center">
-              {navLinks.map((link, idx) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.08 }}
-                  className={`text-xl font-sans uppercase tracking-widest ${
-                    activeSection === link.href.substring(1)
-                      ? 'text-brand-gold font-semibold'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                </motion.a>
-              ))}
+              {navLinks.map((link, idx) => {
+                const isActive = location.pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.08 }}
+                  >
+                    <Link
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-lg font-sans uppercase tracking-widest ${
+                        isActive
+                          ? 'text-brand-gold font-semibold text-glow-gold'
+                          : 'text-white/60 hover:text-white'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
 
-              <motion.a
-                href="#quote"
-                onClick={() => setIsOpen(false)}
+              <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
-                className="mt-8 inline-flex items-center gap-2 px-8 py-3 bg-brand-gold text-brand-charcoal text-sm font-semibold uppercase tracking-widest rounded-full hover:bg-brand-light transition-colors"
+                className="mt-8"
               >
-                Get Free Quote
-                <ArrowRight className="w-4 h-4" />
-              </motion.a>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="btn-gold-glow inline-flex items-center gap-2 px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-full"
+                >
+                  Get Free Quote
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
