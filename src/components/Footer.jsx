@@ -12,7 +12,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#070707] border-t border-white/5 pt-20 pb-8 relative">
+    <footer className="bg-[#F3EFE7] border-t border-brand-border pt-20 pb-8 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-12 mb-16">
           
@@ -22,11 +22,11 @@ export default function Footer() {
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls & Interiors" 
-                className="h-16 w-auto mb-6 object-contain filter drop-shadow-[0_0_12px_rgba(212,175,55,0.15)]"
-                style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3)" }}
+                className="h-16 w-auto mb-6 object-contain"
+                style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
               />
             </Link>
-            <p className="text-white/50 font-light text-sm leading-relaxed mb-6">
+            <p className="text-brand-secondaryText font-light text-sm leading-relaxed mb-6">
               Transforming your walls with premium vertical wall printing technology and bespoke luxury interior designs.
             </p>
           </div>
@@ -36,7 +36,7 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-6">
               Navigation
             </h4>
-            <ul className="space-y-3 text-sm font-light text-white/50">
+            <ul className="space-y-3 text-sm font-light text-brand-secondaryText">
               <li><Link to="/" className="hover:text-brand-gold transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-brand-gold transition-colors">About Us</Link></li>
               <li><Link to="/services" className="hover:text-brand-gold transition-colors">Services</Link></li>
@@ -51,15 +51,15 @@ export default function Footer() {
               Get in Touch
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm font-light">
+              <li className="flex items-center gap-3 text-brand-secondaryText hover:text-brand-gold transition-colors text-sm font-light">
                 <Mail className="w-4 h-4 text-brand-gold" />
                 <a href="mailto:info@svwallsandinteriors.com">info@svwallsandinteriors.com</a>
               </li>
-              <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm font-light">
+              <li className="flex items-center gap-3 text-brand-secondaryText hover:text-brand-gold transition-colors text-sm font-light">
                 <Phone className="w-4 h-4 text-brand-gold" />
                 <a href="tel:+61400000000">+61 400 000 000</a>
               </li>
-              <li className="flex items-center gap-3 text-white/60 text-sm font-light">
+              <li className="flex items-center gap-3 text-brand-secondaryText text-sm font-light">
                 <MapPin className="w-4 h-4 text-brand-gold" />
                 <span>Melbourne, VIC, Australia</span>
               </li>
@@ -68,12 +68,12 @@ export default function Footer() {
         </div>
 
         {/* Legal bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/30 text-xs font-light">
+        <div className="border-t border-brand-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-brand-secondaryText/70 text-xs font-light">
             &copy; {currentYear} SV Walls &amp; Interiors. All Rights Reserved.
           </p>
-          <p className="text-white/30 text-xs font-light">
-            Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-light transition-colors font-medium">Vikrin pvt ltd</a>
+          <p className="text-brand-secondaryText/70 text-xs font-light">
+            Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-charcoal transition-colors font-medium">Vikrin pvt ltd</a>
           </p>
         </div>
       </div>

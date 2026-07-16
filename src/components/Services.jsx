@@ -73,7 +73,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl font-serif text-white mb-6 font-light"
+            className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light"
           >
             Innovative Printing &amp; Custom Interiors
           </motion.h2>
@@ -88,7 +88,7 @@ export default function Services() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-white/60 font-light max-w-2xl mx-auto"
+            className="text-brand-secondaryText font-light max-w-2xl mx-auto"
           >
             We merge cutting-edge vertical printing technology with premium design aesthetics to craft custom murals, accent panels, and luxury interior layouts.
           </motion.p>
@@ -106,7 +106,7 @@ export default function Services() {
                 viewport={{ once: true, margin: "-100px" }}
                 variants={cardVariants}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="glass-card glow-border rounded-3xl overflow-hidden group"
+                className="glass-card glow-border rounded-3xl overflow-hidden group bg-white shadow-soft-card"
               >
                 {/* Visual Image Header */}
                 <div className="h-56 overflow-hidden relative">
@@ -115,11 +115,11 @@ export default function Services() {
                     alt={item.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-cardDark to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent opacity-60" />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-xl font-serif text-white font-medium mb-4">{item.title}</h3>
-                  <p className="text-white/50 text-sm font-light leading-relaxed">{item.description}</p>
+                  <h3 className="text-xl font-serif text-brand-charcoal font-medium mb-4">{item.title}</h3>
+                  <p className="text-brand-secondaryText text-sm font-light leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             );
@@ -132,7 +132,7 @@ export default function Services() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative glass-card rounded-[32px] p-8 md:p-12 mb-24 border border-brand-gold/15 overflow-hidden flex flex-col md:flex-row gap-8 items-center justify-between"
+          className="relative glass-card rounded-[32px] p-8 md:p-12 mb-24 border border-brand-border bg-white shadow-soft-card overflow-hidden flex flex-col md:flex-row gap-8 items-center justify-between"
         >
           {/* Subtle light streak */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_8s_infinite] pointer-events-none" />
@@ -140,24 +140,24 @@ export default function Services() {
             <span className="px-3 py-1 rounded-full bg-brand-gold/15 text-brand-gold text-[10px] uppercase font-semibold tracking-widest mb-4 inline-block">
               Premium Interior Craftsmanship
             </span>
-            <h3 className="text-2xl md:text-3xl font-serif text-white font-light mb-4">
+            <h3 className="text-2xl md:text-3xl font-serif text-brand-charcoal font-light mb-4">
               All Types of High-End Interior Solutions
             </h3>
-            <p className="text-white/60 text-sm font-light leading-relaxed">
+            <p className="text-brand-secondaryText text-sm font-light leading-relaxed">
               We design and construct tailored TV entertainment units, contemporary media consoles, bedroom headboard feature walls, and luxury 3D panels. Our expert team ensures every element integrates perfectly to complement your architecture.
             </p>
           </div>
           <a
             href="#quote"
-            className="btn-shine whitespace-nowrap px-8 py-4 bg-transparent border border-brand-gold/60 text-brand-gold text-xs font-semibold uppercase tracking-widest rounded-full hover:bg-brand-gold hover:text-brand-charcoal transition-colors duration-500"
+            className="btn-shine btn-secondary-custom whitespace-nowrap px-8 py-4 text-xs font-semibold uppercase tracking-widest rounded-full"
           >
             Inquire About Interiors
           </a>
         </motion.div>
 
         {/* Why Choose Us / Highlights Grid */}
-        <div className="border-t border-white/5 pt-20">
-          <h3 className="text-center text-xs uppercase tracking-[0.35em] text-white/40 mb-16 font-semibold">
+        <div className="border-t border-brand-border pt-20">
+          <h3 className="text-center text-xs uppercase tracking-[0.35em] text-brand-secondaryText/80 mb-16 font-semibold">
             The SV Signature Quality Standard
           </h3>
           <div className="grid md:grid-cols-3 gap-12">
@@ -172,7 +172,7 @@ export default function Services() {
                   variants={cardVariants}
                   className="flex gap-5"
                 >
-                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl overflow-hidden border border-brand-gold/30">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl overflow-hidden border border-brand-border">
                     <img 
                       src={item.image} 
                       alt={item.title} 
@@ -180,8 +180,8 @@ export default function Services() {
                     />
                   </div>
                   <div>
-                    <h4 className="text-lg font-sans text-white font-medium mb-2">{item.title}</h4>
-                    <p className="text-white/40 text-sm font-light leading-relaxed">{item.description}</p>
+                    <h4 className="text-lg font-sans text-brand-charcoal font-medium mb-2">{item.title}</h4>
+                    <p className="text-brand-secondaryText text-sm font-light leading-relaxed">{item.description}</p>
                   </div>
                 </motion.div>
               );

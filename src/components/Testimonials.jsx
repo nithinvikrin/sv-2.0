@@ -35,11 +35,11 @@ export default function Testimonials() {
         <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
           Client Stories
         </span>
-        <h2 className="text-3xl md:text-5xl font-serif text-white font-light">
+        <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal font-light">
           What Our Clients Say
         </h2>
       </div>
-
+ 
       {/* Testimonials Infinite Marquee container */}
       <div className="flex overflow-hidden select-none no-select [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
         {/* Double array to achieve infinite loop scroll */}
@@ -47,7 +47,7 @@ export default function Testimonials() {
           {[...reviews, ...reviews].map((rev, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-[350px] md:w-[420px] glass-card rounded-2xl p-8 border border-white/5 relative group hover:border-brand-gold/30 transition-all duration-500"
+              className="flex-shrink-0 w-[350px] md:w-[420px] glass-card rounded-2xl p-8 border border-brand-border bg-white shadow-soft-card hover:shadow-soft-card-hover relative group transition-all duration-500"
             >
               {/* Rating */}
               <div className="flex gap-1 mb-4 text-brand-gold">
@@ -55,12 +55,12 @@ export default function Testimonials() {
                   <Star key={i} className="w-4 h-4 fill-brand-gold" />
                 ))}
               </div>
-              <p className="text-white/70 text-sm font-light leading-relaxed mb-6 italic">
+              <p className="text-brand-secondaryText text-sm font-light leading-relaxed mb-6 italic">
                 "{rev.text}"
               </p>
               <div>
-                <h4 className="text-white font-semibold text-sm tracking-wide font-sans">{rev.name}</h4>
-                <span className="text-brand-gold/70 text-xs font-light tracking-wider uppercase">{rev.role}</span>
+                <h4 className="text-brand-charcoal font-semibold text-sm tracking-wide font-sans">{rev.name}</h4>
+                <span className="text-brand-gold text-xs font-light tracking-wider uppercase">{rev.role}</span>
               </div>
             </div>
           ))}

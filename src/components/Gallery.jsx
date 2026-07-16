@@ -71,10 +71,10 @@ export default function Gallery() {
           <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
             Portfolio
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-6 font-light">
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light">
             Completed Projects
           </h2>
-          <p className="text-white/60 font-light">
+          <p className="text-brand-secondaryText font-light">
             Take a look at how we transform homes, businesses, and retail environments with detailed printing and structural panels.
           </p>
         </div>
@@ -87,8 +87,8 @@ export default function Gallery() {
               onClick={() => setActiveFilter(cat)}
               className={`px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 ${
                 activeFilter === cat
-                  ? "bg-brand-gold text-brand-charcoal"
-                  : "bg-white/5 text-white/70 border border-white/5 hover:border-brand-gold/30 hover:text-white"
+                  ? "bg-brand-gold text-white shadow-md shadow-brand-gold/10"
+                  : "bg-white text-brand-secondaryText border border-brand-border hover:border-brand-gold hover:text-brand-gold"
               }`}
             >
               {cat}
@@ -110,7 +110,7 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-brand-cardDark border border-white/5 cursor-pointer"
+                className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-brand-cardDark border border-brand-border shadow-soft-card hover:shadow-soft-card-hover cursor-pointer"
                 onClick={() => setActiveImage(item)}
               >
                 {/* Image */}
@@ -121,15 +121,15 @@ export default function Gallery() {
                   loading="lazy"
                 />
 
-                {/* Dark Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-bgDark via-brand-bgDark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6" >
+                {/* Light Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6" >
                   <div className="w-8 h-8 rounded-full bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center text-brand-gold mb-3">
                     <ZoomIn className="w-4 h-4" />
                   </div>
                   <span className="text-[10px] uppercase tracking-widest text-brand-gold font-semibold mb-1">
                     {item.category}
                   </span>
-                  <h3 className="text-white text-base font-serif font-light leading-snug">
+                  <h3 className="text-brand-charcoal text-base font-serif font-light leading-snug">
                     {item.title}
                   </h3>
                 </div>
@@ -146,11 +146,11 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
             onClick={() => setActiveImage(null)}
           >
             <button 
-              className="absolute top-6 right-6 p-2 rounded-full bg-white/5 text-white hover:text-brand-gold transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:text-brand-gold transition-colors"
               onClick={() => setActiveImage(null)}
             >
               <X className="w-6 h-6" />
@@ -160,7 +160,7 @@ export default function Gallery() {
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
-              className="relative max-w-4xl max-h-[85vh] overflow-hidden rounded-2xl border border-white/10"
+              className="relative max-w-4xl max-h-[85vh] overflow-hidden rounded-2xl border border-brand-border"
               onClick={(e) => e.stopPropagation()}
             >
               <img 
@@ -168,11 +168,11 @@ export default function Gallery() {
                 alt={activeImage.title} 
                 className="w-full h-auto max-h-[75vh] object-contain"
               />
-              <div className="bg-brand-charcoal p-6 border-t border-white/5">
+              <div className="bg-white p-6 border-t border-brand-border">
                 <span className="text-xs uppercase tracking-widest text-brand-gold font-semibold">
                   {activeImage.category}
                 </span>
-                <h3 className="text-white text-lg font-serif font-light mt-1">
+                <h3 className="text-brand-charcoal text-lg font-serif font-light mt-1">
                   {activeImage.title}
                 </h3>
               </div>

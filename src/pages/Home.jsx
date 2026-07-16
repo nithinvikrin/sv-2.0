@@ -32,13 +32,8 @@ import {
   Paintbrush
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Hero from '../components/Hero';
 import BeforeAfter from '../components/BeforeAfter';
-
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1617806118233-18e1db207f62?auto=format&fit=crop&w=1920&q=80"
-];
 
 const TRUST_BADGES = [
   { icon: Sparkles, label: "High Resolution Printing" },
@@ -283,17 +278,8 @@ function AnimatedCounter({ value, duration = 2000 }) {
 }
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const [heroIndex, setHeroIndex] = useState(0);
   const [activeFaq, setActiveFaq] = useState(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
 
   // Autoplay for Testimonials
   useEffect(() => {
@@ -303,150 +289,15 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  const headingText = "Direct Vertical Wall Printing & Custom Murals";
-  const words = headingText.split(" ");
-
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.08 } }
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
-    }
-  };
-
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
   return (
-    <div className="relative overflow-hidden bg-brand-bgDark" ref={containerRef}>
+    <div className="relative overflow-hidden bg-brand-bgDark">
       
       {/* 1. HERO SECTION */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <motion.div style={{ scale: bgScale }} className="absolute inset-0 w-full h-full">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={heroIndex}
-              src={HERO_IMAGES[heroIndex]}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.6, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full object-cover"
-              alt="Premium Interior Design Showcase"
-            />
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Ambient Glows specific to Hero */}
-        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-brand-glowPurple/10 rounded-full blur-[120px] z-10 pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand-glowBlue/10 rounded-full blur-[150px] z-10 pointer-events-none" />
-
-        <div className="relative z-20 max-w-5xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
-          <motion.div style={{ y: textY, opacity }} className="flex flex-col items-center">
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1A1813] border border-brand-gold/30 text-brand-gold uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold mb-8 shadow-gold-glow"
-            >
-              <span className="w-2 h-2 rounded-full bg-brand-gold" />
-              Advanced Vertical UV Wall Printing &amp; Custom Murals
-            </motion.div>
-
-            <motion.h1
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap justify-center max-w-5xl text-3xl md:text-5xl lg:text-6.5xl font-serif text-brand-charcoal tracking-tight leading-[1.4] mb-8"
-            >
-              {words.map((word, idx) => (
-                <span key={idx} className="inline-block bg-brand-gold text-brand-charcoal px-3 py-1 md:px-5 md:py-2 mx-1 my-1.5 md:mx-2 md:my-2 font-serif font-normal uppercase tracking-wider text-glow-gold">
-                  <motion.span variants={wordVariants} className="inline-block">
-                    {word}
-                  </motion.span>
-                </span>
-              ))}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 1 }}
-              className="text-brand-charcoal text-base md:text-lg max-w-3xl font-light tracking-wide mb-10 font-sans leading-relaxed"
-            >
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 1 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full mb-12"
-            >
-              <Link
-                to="/contact"
-                className="btn-gold-glow w-full sm:w-auto px-8 py-4 text-xs font-bold uppercase tracking-widest rounded-full text-center"
-              >
-                Get Free Quote
-              </Link>
-              <button
-                onClick={() => {
-                  document.getElementById('applications')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="btn-shine w-full sm:w-auto px-8 py-4 border border-brand-charcoal/20 text-brand-charcoal hover:border-brand-goldDark hover:text-brand-goldDark transition-colors duration-500 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-2 bg-white/40 backdrop-blur-sm"
-              >
-                View Our Works
-                <Play className="w-3 h-3 fill-brand-charcoal/10 group-hover:fill-brand-goldDark/10" />
-              </button>
-            </motion.div>
-
-            {/* Trust Badges */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-4xl border-t border-brand-charcoal/10 pt-6"
-            >
-              {TRUST_BADGES.map((badge, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-brand-charcoal/80 text-xs font-sans font-medium">
-                  <badge.icon className="w-4 h-4 text-brand-goldDark" />
-                  <span>{badge.label}</span>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 select-none no-select">
-          <span className="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal/60 font-semibold">
-            Scroll to discover
-          </span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-5 h-9 rounded-full border border-brand-charcoal/20 flex justify-center p-1"
-          >
-            <div className="w-1 h-2 bg-brand-goldDark rounded-full" />
-          </motion.div>
-        </div>
-      </section>
+      <Hero />
 
       {/* 2. WHAT WE DO SECTION */}
       <section className="py-24 md:py-32 relative z-20 bg-brand-bgDark/40">
@@ -455,11 +306,11 @@ export default function Home() {
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-4 block">
               Our Core Services
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light leading-tight">
               High-Fidelity Wall Customization
             </h2>
             <div className="w-20 h-[1px] bg-brand-gold/60 mx-auto mt-6" />
-            <p className="text-white/60 font-light mt-4 leading-relaxed text-sm md:text-base">
+            <p className="text-brand-secondaryText font-light mt-4 leading-relaxed text-sm md:text-base">
               Explore our specialization in direct wall printing technology, tailored to match both premium branding needs and elegant residential design aesthetics.
             </p>
           </div>
@@ -472,7 +323,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08, duration: 0.8 }}
-                className="glass-card glow-border rounded-2xl border border-white/5 hover:border-brand-gold/20 flex flex-col overflow-hidden transition-all group"
+                className="glass-card rounded-2xl border border-brand-border bg-white shadow-soft-card hover:shadow-soft-card-hover flex flex-col overflow-hidden transition-all group"
               >
                 {/* Card Image Header with Zoom Effect */}
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
@@ -481,16 +332,16 @@ export default function Home() {
                     alt={item.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
                 </div>
 
                 {/* Card Body */}
                 <div className="pt-6 px-6 pb-6 flex-grow flex flex-col justify-between">
                   <div>
-                    <h4 className="text-white font-sans font-semibold text-lg mb-3 tracking-wide group-hover:text-brand-gold transition-colors duration-300">
+                    <h4 className="text-brand-charcoal font-sans font-semibold text-lg mb-3 tracking-wide group-hover:text-brand-gold transition-colors duration-300">
                       {item.title}
                     </h4>
-                    <p className="text-white/50 font-light text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-brand-secondaryText font-light text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </motion.div>
@@ -500,13 +351,13 @@ export default function Home() {
       </section>
 
       {/* 3. HOW IT WORKS SECTION */}
-      <section className="py-24 md:py-32 relative z-20 bg-black/30 border-y border-white/5">
+      <section className="py-24 md:py-32 relative z-20 bg-[#F5F1EA] border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-4 block">
               Seamless Process
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light leading-tight">
               From Artwork to Finished Wall in 4 Steps
             </h2>
             <div className="w-20 h-[1px] bg-brand-gold/60 mx-auto mt-6" />
@@ -525,14 +376,14 @@ export default function Home() {
                 transition={{ delay: idx * 0.15, duration: 0.8 }}
                 className="relative z-10 flex flex-col items-center text-center group"
               >
-                <div className="w-20 h-20 rounded-full glass-card border border-white/10 flex items-center justify-center text-brand-gold mb-6 relative group-hover:border-brand-gold/40 transition-colors duration-500 shadow-lg">
-                  <span className="absolute -top-1 -right-1 bg-brand-gold text-brand-charcoal text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md">
+                <div className="w-20 h-20 rounded-full glass-card bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-6 relative group-hover:border-brand-gold/40 transition-colors duration-500 shadow-soft-card">
+                  <span className="absolute -top-1 -right-1 bg-brand-gold text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md">
                     {step.step}
                   </span>
                   <step.icon className="w-8 h-8 group-hover:scale-110 transition-transform duration-500 text-brand-gold" />
                 </div>
-                <h4 className="text-white font-semibold text-lg mb-3 tracking-wide">{step.title}</h4>
-                <p className="text-white/50 font-light text-xs md:text-sm leading-relaxed px-4">{step.desc}</p>
+                <h4 className="text-brand-charcoal font-semibold text-lg mb-3 tracking-wide">{step.title}</h4>
+                <p className="text-brand-secondaryText font-light text-xs md:text-sm leading-relaxed px-4">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -546,7 +397,7 @@ export default function Home() {
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-4 block">
               Engineered Excellence
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light leading-tight">
               Why Choose SV Walls
             </h2>
             <div className="w-20 h-[1px] bg-brand-gold/60 mx-auto mt-6" />
@@ -560,7 +411,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08, duration: 0.8 }}
-                className="glass-card glow-border rounded-2xl border border-white/5 hover:border-brand-gold/20 flex flex-col overflow-hidden transition-all group"
+                className="glass-card rounded-2xl border border-brand-border bg-white shadow-soft-card hover:shadow-soft-card-hover flex flex-col overflow-hidden transition-all group"
               >
                 {/* Card Image Header with Zoom Effect */}
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
@@ -569,17 +420,17 @@ export default function Home() {
                     alt={item.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
                 </div>
 
                 {/* Card Body */}
                 <div className="pt-5 px-5 pb-5 flex-grow flex flex-col justify-between">
                   <div>
-                    <h4 className="text-white font-sans font-semibold text-sm mb-2 flex items-center gap-2 tracking-wide group-hover:text-brand-gold transition-colors duration-300">
+                    <h4 className="text-brand-charcoal font-sans font-semibold text-sm mb-2 flex items-center gap-2 tracking-wide group-hover:text-brand-gold transition-colors duration-300">
                       <item.icon className="w-4 h-4 text-brand-gold flex-shrink-0" />
                       {item.title}
                     </h4>
-                    <p className="text-white/40 font-light text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-brand-secondaryText font-light text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </motion.div>
@@ -589,13 +440,13 @@ export default function Home() {
       </section>
 
       {/* 5. APPLICATIONS SECTION */}
-      <section id="applications" className="py-24 md:py-32 relative z-20 bg-brand-bgDark/60">
+      <section id="applications" className="py-24 md:py-32 relative z-20 bg-[#F5F1EA] border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-4 block">
               Versatile Printing Applications
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light leading-tight">
               Transforming Diverse Architectural Spaces
             </h2>
             <div className="w-20 h-[1px] bg-brand-gold/60 mx-auto mt-6" />
@@ -609,16 +460,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.6 }}
-                className="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 hover:border-brand-gold/40 transition-all duration-500 cursor-pointer shadow-lg"
+                className="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-brand-border hover:border-brand-gold/40 transition-all duration-500 cursor-pointer shadow-soft-card"
               >
                 <img 
                   src={item.image} 
                   alt={item.title} 
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent z-10 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent z-10 transition-opacity animate-pulse-slow" />
                 <div className="absolute bottom-4 left-4 z-20">
-                  <h4 className="text-white font-semibold text-sm md:text-base font-sans tracking-wide group-hover:text-brand-gold transition-colors duration-300">
+                  <h4 className="text-brand-charcoal font-semibold text-sm md:text-base font-sans tracking-wide group-hover:text-brand-gold transition-colors duration-300">
                     {item.title}
                   </h4>
                 </div>
@@ -629,16 +480,16 @@ export default function Home() {
       </section>
 
       {/* 6. BEFORE & AFTER SHOWCASE */}
-      <section className="py-24 md:py-32 relative z-20 bg-black/40 border-t border-white/5">
+      <section className="py-24 md:py-32 relative z-20 bg-brand-bgDark border-t border-brand-border">
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-4 block">
               Interactive Transformation
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light leading-tight">
               Before &amp; After Showcase
             </h2>
-            <p className="text-white/60 font-light mt-4 leading-relaxed text-sm md:text-base">
+            <p className="text-brand-secondaryText font-light mt-4 leading-relaxed text-sm md:text-base">
               Drag the center divider left and right to witness the direct-printing mural transformation on a raw wall.
             </p>
             <div className="w-20 h-[1px] bg-brand-gold/60 mx-auto mt-6" />
@@ -651,7 +502,7 @@ export default function Home() {
       </section>
 
       {/* 7. STATISTICS SECTION */}
-      <section className="py-20 bg-brand-bgDark relative border-y border-white/5">
+      <section className="py-20 bg-[#F5F1EA] relative border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
@@ -661,11 +512,11 @@ export default function Home() {
               { value: "15", label: "Cities Served", suffix: "" }
             ].map((stat, idx) => (
               <div key={idx} className="flex flex-col items-center">
-                <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight mb-2 font-light">
+                <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-brand-charcoal tracking-tight mb-2 font-light">
                   <AnimatedCounter value={stat.value} />
                   <span className="text-brand-gold font-sans font-normal">{stat.suffix}</span>
                 </div>
-                <div className="text-white/50 text-[10px] md:text-xs uppercase tracking-widest font-semibold font-sans">
+                <div className="text-brand-secondaryText text-[10px] md:text-xs uppercase tracking-widest font-semibold font-sans">
                   {stat.label}
                 </div>
               </div>
@@ -675,16 +526,16 @@ export default function Home() {
       </section>
 
       {/* 8. CUSTOMER TESTIMONIALS CAROUSEL */}
-      <section className="py-24 md:py-32 bg-[#090909] relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-brand-bgDark relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 md:px-12 text-center relative z-20">
           <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
             Client Stories
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white font-light mb-16">
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-16 font-light">
             What Our Clients Say
           </h2>
 
-          <div className="relative glass-card rounded-[32px] p-8 md:p-16 border border-white/5 shadow-2xl overflow-hidden max-w-4xl mx-auto">
+          <div className="relative glass-card rounded-[32px] p-8 md:p-16 border border-brand-border bg-white shadow-soft-card overflow-hidden max-w-4xl mx-auto">
             <div className="absolute top-6 left-6 w-24 h-24 bg-brand-gold/5 rounded-full blur-xl pointer-events-none" />
             
             <AnimatePresence mode="wait">
@@ -710,15 +561,15 @@ export default function Home() {
                   ))}
                 </div>
 
-                <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-8 italic max-w-2xl">
+                <p className="text-brand-secondaryText text-base md:text-lg font-light leading-relaxed mb-8 italic max-w-2xl">
                   "{REVIEWS[testimonialIndex].text}"
                 </p>
 
                 <div>
-                  <h4 className="text-white font-semibold text-base tracking-wide font-sans">
+                  <h4 className="text-brand-charcoal font-semibold text-base tracking-wide font-sans">
                     {REVIEWS[testimonialIndex].name}
                   </h4>
-                  <span className="text-brand-gold/80 text-xs font-light tracking-wider uppercase">
+                  <span className="text-brand-gold text-xs font-light tracking-wider uppercase">
                     {REVIEWS[testimonialIndex].role}
                   </span>
                 </div>
@@ -729,14 +580,14 @@ export default function Home() {
             <div className="flex justify-center gap-4 mt-10">
               <button
                 onClick={() => setTestimonialIndex((prev) => (prev - 1 + REVIEWS.length) % REVIEWS.length)}
-                className="p-3 border border-white/10 rounded-full hover:border-brand-gold hover:text-brand-gold text-white transition-colors cursor-pointer"
+                className="p-3 border border-brand-border rounded-full hover:border-brand-gold hover:text-brand-gold text-brand-charcoal bg-white shadow-sm transition-colors cursor-pointer"
                 aria-label="Previous review"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setTestimonialIndex((prev) => (prev + 1) % REVIEWS.length)}
-                className="p-3 border border-white/10 rounded-full hover:border-brand-gold hover:text-brand-gold text-white transition-colors cursor-pointer"
+                className="p-3 border border-brand-border rounded-full hover:border-brand-gold hover:text-brand-gold text-brand-charcoal bg-white shadow-sm transition-colors cursor-pointer"
                 aria-label="Next review"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -753,7 +604,7 @@ export default function Home() {
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-4 block">
               Have Questions?
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light leading-tight">
               Frequently Asked Questions
             </h2>
             <div className="w-20 h-[1px] bg-brand-gold/60 mx-auto mt-6" />
@@ -765,14 +616,14 @@ export default function Home() {
               return (
                 <div 
                   key={idx} 
-                  className="glass-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10"
+                  className="glass-card rounded-2xl border border-brand-border bg-white shadow-soft-card overflow-hidden transition-all duration-300 hover:border-brand-border/85"
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full text-left p-6 md:p-8 flex items-center justify-between gap-4 font-semibold text-white hover:text-brand-gold transition-colors duration-300"
+                    className="w-full text-left p-6 md:p-8 flex items-center justify-between gap-4 font-semibold text-brand-charcoal hover:text-brand-gold transition-colors duration-300"
                   >
                     <span className="font-sans text-sm md:text-base font-medium">{faq.q}</span>
-                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180 text-brand-gold' : 'text-white/40'}`} />
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180 text-brand-gold' : 'text-brand-secondaryText/60'}`} />
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -783,7 +634,7 @@ export default function Home() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="p-6 md:p-8 pt-0 text-white/60 text-xs md:text-sm font-light leading-relaxed border-t border-white/5">
+                        <div className="p-6 md:p-8 pt-0 text-brand-secondaryText text-xs md:text-sm font-light leading-relaxed border-t border-brand-border">
                           {faq.a}
                         </div>
                       </motion.div>
@@ -804,18 +655,18 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="glass-card rounded-[32px] p-8 md:p-16 border border-brand-gold/20 shadow-2xl relative overflow-hidden"
+            className="glass-card rounded-[32px] p-8 md:p-16 border border-brand-border bg-white shadow-soft-card relative overflow-hidden"
           >
-            <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-glowBlue/10 rounded-full blur-[80px]" />
-            <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-glowPurple/10 rounded-full blur-[80px]" />
+            <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-glowBlue/3 rounded-full blur-[80px]" />
+            <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-glowPurple/3 rounded-full blur-[80px]" />
             
             <span className="text-xs uppercase tracking-[0.35em] text-brand-gold font-semibold mb-6 block">
               Start Your Transformation
             </span>
-            <h3 className="text-3xl md:text-5xl font-serif text-white font-light leading-tight mb-8">
+            <h3 className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-8 font-light leading-tight">
               Ready to Transform Your Walls?
             </h3>
-            <p className="text-white/60 font-light max-w-2xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
+            <p className="text-brand-secondaryText font-light max-w-2xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
               Contact us today to schedule your on-site measurement, request a custom digital design proof, or discuss pricing calculation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -829,7 +680,7 @@ export default function Home() {
                 href="https://wa.me/919999999999?text=Hello%20SV%20Walls%2C%20I%20am%20interested%20in%20direct%20wall%20printing%20services.%20Please%20provide%20more%20details."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 border border-white/10 text-white hover:border-brand-gold hover:text-brand-gold transition-colors duration-500 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-2 bg-black/40"
+                className="btn-secondary-custom w-full sm:w-auto px-8 py-4 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-4 h-4 text-green-500 fill-green-500" />
                 WhatsApp Us

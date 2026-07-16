@@ -63,10 +63,10 @@ export default function Services() {
           <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
             Craftsmanship &amp; Tech
           </span>
-          <h1 className="text-4xl md:text-6xl font-serif text-white font-light tracking-tight leading-tight mb-8">
+          <h1 className="text-4xl md:text-6xl font-serif text-brand-charcoal mb-8 font-light tracking-tight leading-tight">
             Bespoke Services for Elite Spaces
           </h1>
-          <p className="text-white/60 font-light text-base md:text-lg leading-relaxed">
+          <p className="text-brand-secondaryText font-light text-base md:text-lg leading-relaxed">
             From direct vertical UV printing to custom-manufactured fluted panels and luxury media console construction, we bring master-class finishing standards to every vertical element.
           </p>
         </div>
@@ -87,13 +87,13 @@ export default function Services() {
                 }`}
               >
                 {/* Visual Image */}
-                <div className="w-full lg:w-1/2 aspect-[16/10] rounded-[28px] overflow-hidden border border-white/10 shadow-2xl relative group">
+                <div className="w-full lg:w-1/2 aspect-[16/10] rounded-[28px] overflow-hidden border border-brand-border shadow-soft-card relative group">
                   <img 
                     src={srv.image} 
                     alt={srv.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none" />
                 </div>
 
                 {/* Content */}
@@ -101,12 +101,12 @@ export default function Services() {
                   <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 border border-brand-gold/20">
                     <srv.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-serif text-white font-light mb-4">{srv.title}</h3>
-                  <p className="text-white/50 font-light text-sm leading-relaxed mb-8">{srv.description}</p>
+                  <h3 className="text-2xl md:text-3xl font-serif text-brand-charcoal font-light mb-4">{srv.title}</h3>
+                  <p className="text-brand-secondaryText font-light text-sm leading-relaxed mb-8">{srv.description}</p>
                   
                   <ul className="space-y-3 mb-8">
                     {srv.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-center gap-3 text-xs text-white/70">
+                      <li key={fIdx} className="flex items-center gap-3 text-xs text-brand-charcoal/80">
                         <div className="w-4 h-4 rounded-full bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center text-brand-gold flex-shrink-0">
                           <Check className="w-2.5 h-2.5" />
                         </div>
@@ -117,7 +117,7 @@ export default function Services() {
 
                   <Link
                     to="/contact"
-                    className="btn-shine inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-brand-gold/50 text-brand-gold hover:bg-brand-gold hover:text-brand-charcoal text-xs font-semibold uppercase tracking-widest rounded-full transition-all duration-500"
+                    className="btn-shine btn-secondary-custom inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-widest rounded-full"
                   >
                     Inquire About This Service
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -129,12 +129,12 @@ export default function Services() {
         </div>
 
         {/* Surfaces Matrix Table */}
-        <div className="border-t border-white/5 pt-24">
+        <div className="border-t border-brand-border pt-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
               Architectural Compatibility
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif text-white font-light text-glow-gold">
+            <h2 className="text-3xl md:text-4xl font-serif text-brand-charcoal font-light">
               Surface Engineering &amp; Preparation
             </h2>
           </div>
@@ -142,16 +142,16 @@ export default function Services() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-white/50 text-xs uppercase tracking-widest">
+                <tr className="border-b border-brand-border text-brand-secondaryText text-xs uppercase tracking-widest">
                   <th className="py-4 px-6 font-semibold">Surface Material</th>
                   <th className="py-4 px-6 font-semibold">UV Printing Compatibility</th>
                   <th className="py-4 px-6 font-semibold">3D Panel Mounting</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 font-light text-white/60">
+              <tbody className="divide-y divide-brand-border font-light text-brand-secondaryText">
                 {SURFACES.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-5 px-6 font-medium text-white">{item.surface}</td>
+                  <tr key={idx} className="hover:bg-[#F5F1EA]/30 transition-colors">
+                    <td className="py-5 px-6 font-medium text-brand-charcoal">{item.surface}</td>
                     <td className="py-5 px-6 leading-relaxed">{item.printing}</td>
                     <td className="py-5 px-6 leading-relaxed">{item.panels}</td>
                   </tr>

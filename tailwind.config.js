@@ -8,33 +8,38 @@ export default {
     extend: {
       colors: {
         brand: {
-          light: '#F5F5F7', // Apple-like offwhite
-          gold: '#D4AF37', // Pure luxury gold
-          goldDark: '#AA8417',
-          charcoal: '#0B0B0B', // Core luxury black
-          bgDark: '#0B0B0B',
-          cardDark: '#121212',
+          light: '#F2EEE7', // Soft Beige / Secondary Background
+          gold: '#C28A46', // Primary Accent / Warm Gold
+          goldLight: '#D9B67A', // Secondary Accent / Light Gold
+          goldDark: '#B77732', // Hover Accent / Copper Gold
+          charcoal: '#2F3138', // Primary Text / Dark Charcoal
+          bgDark: '#F8F6F2', // Primary Background / Warm Ivory
+          cardDark: '#FFFFFF', // Card Background
+          secondaryText: '#6F737A', // Secondary Text
+          border: '#E5DFD4', // Neutral Border
           glowBlue: '#3B82F6',
           glowPurple: '#8B5CF6',
         },
         primary: {
-          50: '#f9f6f0',
-          100: '#f0e8d9',
-          200: '#e1d1b3',
-          300: '#D4AF37',
-          400: '#b18e5e',
-          500: '#9A7B56',
-          600: '#7a5f3f',
-          700: '#5c452e',
-          800: '#3e2e1e',
-          900: '#21180f',
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          300: '#d6d3d1',
+          400: '#a8a29e',
+          500: '#78716c',
+          600: '#57534e',
+          700: '#44403c',
+          800: '#292524',
+          900: '#1c1917',
         },
       },
       boxShadow: {
-        'gold-glow': '0 0 20px rgba(212, 175, 55, 0.15)',
-        'gold-glow-hover': '0 0 35px rgba(212, 175, 55, 0.3)',
-        'blue-glow': '0 0 25px rgba(59, 130, 246, 0.15)',
-        'purple-glow': '0 0 25px rgba(139, 92, 246, 0.15)',
+        'gold-glow': '0 0 20px rgba(182, 141, 64, 0.12)',
+        'gold-glow-hover': '0 0 35px rgba(182, 141, 64, 0.25)',
+        'soft-card': '0 10px 30px -10px rgba(43, 43, 43, 0.06)',
+        'soft-card-hover': '0 15px 35px -5px rgba(182, 141, 64, 0.12)',
+        'blue-glow': '0 0 25px rgba(59, 130, 246, 0.1)',
+        'purple-glow': '0 0 25px rgba(139, 92, 246, 0.1)',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

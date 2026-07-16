@@ -53,11 +53,10 @@ export default function Preloader({ onComplete }) {
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls & Interiors" 
-                className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(197,168,128,0.2)]"
-                style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3)" }}
+                className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(182,141,64,0.15)]"
               />
             </motion.div>
-
+ 
             {/* Brand Title reveal */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -69,18 +68,18 @@ export default function Preloader({ onComplete }) {
                 Vertical Wall Printing &amp; Custom Interiors
               </h2>
             </motion.div>
-
+ 
             {/* Progress bar line */}
-            <div className="w-48 h-[2px] bg-white/5 rounded-full overflow-hidden mt-6 relative">
+            <div className="w-48 h-[2px] bg-brand-border rounded-full overflow-hidden mt-6 relative">
               <motion.div
                 className="h-full bg-gradient-to-r from-brand-gold to-brand-light"
                 style={{ width: `${progress}%` }}
               />
             </div>
-
+ 
             {/* Percentage Display */}
             <motion.div 
-              className="text-white/40 text-sm font-sans mt-3 tracking-widest font-light"
+              className="text-brand-secondaryText/60 text-sm font-sans mt-3 tracking-widest font-light"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
             >

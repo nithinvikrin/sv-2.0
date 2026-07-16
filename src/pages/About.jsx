@@ -40,10 +40,10 @@ export default function About() {
           <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
             Our Identity
           </span>
-          <h1 className="text-4xl md:text-6xl font-serif text-white font-light tracking-tight leading-tight mb-8">
+          <h1 className="text-4xl md:text-6xl font-serif text-brand-charcoal mb-8 font-light tracking-tight leading-tight">
             Pioneering Vertical Artistry &amp; Interior Architecture
           </h1>
-          <p className="text-white/60 font-light text-base md:text-lg leading-relaxed">
+          <p className="text-brand-secondaryText font-light text-base md:text-lg leading-relaxed">
             At SV Walls &amp; Interiors, we exist to redefine spaces. Combining high-resolution German vertical printing technology with premium design and custom fluted wood paneling, we translate digital dreams into physical, structural luxury.
           </p>
         </div>
@@ -61,31 +61,31 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
-              className="glass-card glow-border p-8 rounded-[24px] border border-white/5"
+              className="glass-card p-8 rounded-[24px] border border-brand-border bg-white shadow-soft-card"
             >
               <div className="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 border border-brand-gold/25">
                 <val.icon className="w-6 h-6" />
               </div>
-              <h3 className="text-white font-sans font-semibold text-lg mb-3">{val.title}</h3>
-              <p className="text-white/40 font-light text-sm leading-relaxed">{val.desc}</p>
+              <h3 className="text-brand-charcoal font-sans font-semibold text-lg mb-3">{val.title}</h3>
+              <p className="text-brand-secondaryText font-light text-sm leading-relaxed">{val.desc}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Technology Highlight */}
-        <div className="relative glass-card rounded-[32px] p-8 md:p-16 border border-brand-gold/15 mb-32 overflow-hidden">
+        <div className="relative glass-card rounded-[32px] p-8 md:p-16 border border-brand-border bg-white shadow-soft-card mb-32 overflow-hidden">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <span className="text-[10px] uppercase tracking-widest text-brand-gold font-bold mb-4 inline-block">
                 Precision Tech Specs
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif text-white font-light mb-6">
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-charcoal mb-6 font-light">
                 Next-Gen Vertical Printing Tech
               </h2>
-              <p className="text-white/60 font-light text-sm leading-relaxed mb-6">
+              <p className="text-brand-secondaryText font-light text-sm leading-relaxed mb-6">
                 Unlike traditional vinyl stickers or wallpapers that peel, trap moisture, or bubble, our printing head works directly against the wall. Using multi-axis laser tracking sensors, the print nozzle automatically adjusts to surface contours, maintaining a constant 1mm printing distance over textured brick, fluted timber panels, or rough plaster.
               </p>
-              <ul className="space-y-3 mb-8 text-xs font-light text-white/50">
+              <ul className="space-y-3 mb-8 text-xs font-light text-brand-secondaryText">
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
                   Eco-friendly, VOC-free UV cured pigments with instant solidification
@@ -99,11 +99,11 @@ export default function About() {
                   Multi-surface capability: Glass, acrylic, drywall, metal, tile, wood
                 </li>
               </ul>
-              <Link to="/gallery" className="btn-shine inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-charcoal text-xs font-bold uppercase tracking-widest rounded-full">
+              <Link to="/gallery" className="btn-shine btn-gold-glow inline-flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-widest rounded-full">
                 See Print Precision
               </Link>
             </div>
-            <div className="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+            <div className="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border border-brand-border shadow-soft-card">
               <img 
                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" 
                 alt="Technology Close-up" 
@@ -119,7 +119,7 @@ export default function About() {
             <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
               Information Center
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-light text-glow-gold">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-charcoal font-light">
               Frequently Asked Questions
             </h2>
           </div>
@@ -132,15 +132,15 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.05 }}
-                className="glass-card p-8 rounded-2xl border border-white/5 hover:border-brand-gold/15 transition-all"
+                className="glass-card p-8 rounded-2xl border border-brand-border bg-white shadow-soft-card hover:shadow-soft-card-hover transition-all"
               >
                 <div className="flex gap-4 items-start">
                   <div className="w-6 h-6 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold text-xs font-bold flex-shrink-0 mt-1">
                     ?
                   </div>
                   <div>
-                    <h4 className="text-white font-sans font-semibold text-base mb-2">{faq.question}</h4>
-                    <p className="text-white/50 font-light text-sm leading-relaxed">{faq.answer}</p>
+                    <h4 className="text-brand-charcoal font-sans font-semibold text-base mb-2">{faq.question}</h4>
+                    <p className="text-brand-secondaryText font-light text-sm leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>

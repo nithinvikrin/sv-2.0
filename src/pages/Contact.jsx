@@ -23,10 +23,10 @@ export default function Contact() {
           <span className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block">
             Get In Touch
           </span>
-          <h1 className="text-4xl md:text-6xl font-serif text-white font-light tracking-tight leading-tight mb-8">
+          <h1 className="text-4xl md:text-6xl font-serif text-brand-charcoal mb-8 font-light tracking-tight leading-tight">
             Let's Collaborate On Your Walls
           </h1>
-          <p className="text-white/60 font-light text-base md:text-lg leading-relaxed">
+          <p className="text-brand-secondaryText font-light text-base md:text-lg leading-relaxed">
             Have questions about preparation, layouts, pricing, or fluted panels? Use our estimator below, send us a project request, or contact us directly via WhatsApp.
           </p>
         </div>
@@ -44,14 +44,14 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
-              className="glass-card glow-border p-8 rounded-[24px] border border-white/5 hover:border-brand-gold/15"
+              className="glass-card p-8 rounded-[24px] border border-brand-border bg-white shadow-soft-card hover:shadow-soft-card-hover"
             >
               <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 border border-brand-gold/20">
                 <item.icon className="w-5 h-5" />
               </div>
-              <h3 className="text-white font-sans font-semibold text-base mb-2">{item.title}</h3>
-              <p className="text-white/40 font-light text-xs leading-relaxed mb-6">{item.desc}</p>
-              <a href={item.link} className="text-brand-gold text-xs font-semibold uppercase tracking-widest hover:text-white transition-colors">
+              <h3 className="text-brand-charcoal font-sans font-semibold text-base mb-2">{item.title}</h3>
+              <p className="text-brand-secondaryText font-light text-xs leading-relaxed mb-6">{item.desc}</p>
+              <a href={item.link} className="text-brand-gold text-xs font-semibold uppercase tracking-widest hover:text-brand-charcoal transition-colors">
                 {item.action}
               </a>
             </motion.div>
@@ -59,7 +59,7 @@ export default function Contact() {
         </div>
 
         {/* Calculator and Consultation Form */}
-        <div className="border-t border-white/5 pt-20">
+        <div className="border-t border-brand-border pt-20">
           <QuoteCalculator />
         </div>
 
@@ -69,16 +69,16 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="glass-card rounded-[32px] p-8 md:p-12 mt-24 border border-brand-gold/15 flex flex-col md:flex-row gap-8 items-center justify-between"
+          className="glass-card rounded-[32px] p-8 md:p-12 mt-24 border border-brand-border bg-white shadow-soft-card flex flex-col md:flex-row gap-8 items-center justify-between"
         >
           <div>
             <span className="px-3 py-1 rounded-full bg-[#25D366]/15 text-[#25D366] text-[10px] uppercase font-bold tracking-widest mb-4 inline-block">
               Direct Communication
             </span>
-            <h3 className="text-2xl md:text-3xl font-serif text-white font-light mb-4">
+            <h3 className="text-2xl md:text-3xl font-serif text-brand-charcoal font-light mb-4">
               Need immediate design answers?
             </h3>
-            <p className="text-white/60 text-sm font-light leading-relaxed max-w-xl">
+            <p className="text-brand-secondaryText text-sm font-light leading-relaxed max-w-xl">
               Tap the button to start a secure WhatsApp chat. You can send us photographs of your walls, dimensions, and reference design layouts directly.
             </p>
           </div>

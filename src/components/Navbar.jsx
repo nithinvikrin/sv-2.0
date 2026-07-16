@@ -34,7 +34,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
           isScrolled 
             ? 'glass-navbar py-4 shadow-xl' 
-            : 'bg-transparent py-6 border-b border-white/0'
+            : 'bg-transparent py-6 border-b border-brand-border/0'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -45,7 +45,7 @@ export default function Navbar() {
                 src="/images/logo.png" 
                 alt="SV Walls & Interiors" 
                 className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.3) drop-shadow(0 0 8px rgba(212,175,55,0.2))" }}
+                style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
               />
             </div>
           </Link>
@@ -59,14 +59,14 @@ export default function Navbar() {
                   key={link.name}
                   to={link.href}
                   className={`relative text-xs uppercase tracking-widest font-sans font-semibold transition-colors py-2 ${
-                    isActive ? 'text-brand-gold' : 'text-white/70 hover:text-white'
+                    isActive ? 'text-brand-gold' : 'text-brand-charcoal/70 hover:text-brand-charcoal'
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold shadow-[0_0_8px_#D4AF37]"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold shadow-[0_0_8px_#C28A46]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -89,7 +89,7 @@ export default function Navbar() {
           {/* Mobile hamburger menu toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-white/80 hover:text-white transition-colors focus:outline-none"
+            className="lg:hidden p-2 text-brand-charcoal/80 hover:text-brand-charcoal transition-colors focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -105,7 +105,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[72px] bg-brand-bgDark/98 backdrop-blur-2xl z-30 lg:hidden flex flex-col p-8 border-t border-white/5"
+            className="fixed inset-0 top-[72px] bg-brand-bgDark/98 backdrop-blur-2xl z-30 lg:hidden flex flex-col p-8 border-t border-brand-border"
           >
             <div className="flex flex-col gap-6 mt-12 items-center">
               {navLinks.map((link, idx) => {
@@ -123,7 +123,7 @@ export default function Navbar() {
                       className={`text-lg font-sans uppercase tracking-widest ${
                         isActive
                           ? 'text-brand-gold font-semibold text-glow-gold'
-                          : 'text-white/60 hover:text-white'
+                          : 'text-brand-charcoal/70 hover:text-brand-charcoal'
                       }`}
                     >
                       {link.name}
