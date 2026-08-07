@@ -22,7 +22,7 @@ export default function Footer() {
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls" 
-                className="h-28 w-auto mb-6 object-contain"
+                className="h-16 md:h-18 w-auto mb-6 object-contain"
                 style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
               />
             </Link>
