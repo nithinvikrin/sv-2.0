@@ -171,7 +171,7 @@ export default function Hero() {
           style={{ textShadow: '0 2px 12px rgba(0,0,0,.30)' }}
           className="text-white/92 text-lg md:text-[22px] max-w-[720px] font-normal tracking-wide mb-10 leading-relaxed"
         >
-          Premium Vertical Wall Printing &amp; Interior Solutions Across Australia
+          Premium Vertical Wall Printing Solutions Across Australia
         </motion.p>
 
         {/* Buttons - Staggered Entry */}

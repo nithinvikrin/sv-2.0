@@ -59,7 +59,7 @@ export default function QuoteCalculator() {
           <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-brand-border shadow-soft-card relative group">
             <img 
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
-              alt="SV Luxury Interior Showcase" 
+              alt="SV Wall Printing Showcase" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-bgDark/80 via-transparent to-transparent" />
@@ -105,7 +105,7 @@ export default function QuoteCalculator() {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="info@svwallsandinteriors.com"
+                        placeholder="info@svwalls.com"
                         className="bg-brand-bgDark border border-brand-border rounded-xl px-4 py-3.5 text-brand-charcoal placeholder-brand-secondaryText/40 text-xs focus:outline-none focus:border-brand-gold/60 focus:ring-1 focus:ring-brand-gold/60 transition-all"
                       />
                     </div>
@@ -138,7 +138,7 @@ export default function QuoteCalculator() {
                         <option>Concrete / Brick</option>
                         <option>Glass / Acrylic</option>
                         <option>Tiles / Ceramic</option>
-                        <option>Interior 3D Panel Work</option>
+                        <option>Feature Wall Print</option>
                       </select>
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function QuoteCalculator() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       rows="3"
-                      placeholder="Tell us about the design concept, custom colors, or specific interior millwork needed..."
+                      placeholder="Tell us about the design concept, wall dimensions, or custom image details..."
                       className="bg-brand-bgDark border border-brand-border rounded-xl px-4 py-3.5 text-brand-charcoal placeholder-brand-secondaryText/40 text-xs focus:outline-none focus:border-brand-gold/60 focus:ring-1 focus:ring-brand-gold/60 transition-all resize-none"
                     />
                   </div>

@@ -9,13 +9,13 @@ const wallPrintingFeatures = [
   },
   {
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-    title: "Custom 3D Panels",
-    description: "Premium interior enhancements with decorative 3D wall panels, custom accent walls, and structured textures."
+    title: "Custom Wall Murals",
+    description: "Personalized photorealistic artwork, corporate graphics, and bespoke wall prints engineered to perfect scale."
   },
   {
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
-    title: "Complete Interiors",
-    description: "Bespoke media setups, TV units, luxury bedroom backdrops, panels, and custom timber/woodwork integrations."
+    title: "Commercial & Branding Prints",
+    description: "High-impact vertical printing for retail spaces, hotel lobbies, cafes, offices, and architectural feature walls."
   }
 ];
 
@@ -66,7 +66,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mb-4 block"
           >
-            Creative Solutions
+            Creative Printing Solutions
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl font-serif text-brand-charcoal mb-6 font-light"
           >
-            Innovative Printing &amp; Custom Interiors
+            Innovative Vertical Wall Printing
           </motion.h2>
           <motion.div 
             initial={{ scaleX: 0 }}
@@ -90,7 +90,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-brand-secondaryText font-light max-w-2xl mx-auto"
           >
-            We merge cutting-edge vertical printing technology with premium design aesthetics to craft custom murals, accent panels, and luxury interior layouts.
+            We merge cutting-edge vertical printing technology with premium design aesthetics to craft custom murals, architectural accents, and direct-to-wall artwork.
           </motion.p>
         </div>
 
@@ -126,7 +126,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* Interior Works Special Announcement Banner */}
+        {/* Special Announcement Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -138,20 +138,20 @@ export default function Services() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_8s_infinite] pointer-events-none" />
           <div className="max-w-2xl">
             <span className="px-3 py-1 rounded-full bg-brand-gold/15 text-brand-gold text-[10px] uppercase font-semibold tracking-widest mb-4 inline-block">
-              Premium Interior Craftsmanship
+              Precision Vertical UV Wall Printing
             </span>
             <h3 className="text-2xl md:text-3xl font-serif text-brand-charcoal font-light mb-4">
-              All Types of High-End Interior Solutions
+              Direct-to-Surface High-Resolution Murals
             </h3>
             <p className="text-brand-secondaryText text-sm font-light leading-relaxed">
-              We design and construct tailored TV entertainment units, contemporary media consoles, bedroom headboard feature walls, and luxury 3D panels. Our expert team ensures every element integrates perfectly to complement your architecture.
+              Our advanced vertical UV printers deliver up to 2880 DPI photographic clarity directly on indoor and outdoor wall surfaces. From residential accent walls to large-scale commercial branding, we print flawlessly without wallpapers or stickers.
             </p>
           </div>
           <a
             href="#quote"
             className="btn-shine btn-secondary-custom whitespace-nowrap px-8 py-4 text-xs font-semibold uppercase tracking-widest rounded-full"
           >
-            Inquire About Interiors
+            Request Wall Printing Quote
           </a>
         </motion.div>
 

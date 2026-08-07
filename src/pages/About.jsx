@@ -41,10 +41,10 @@ export default function About() {
             Our Identity
           </span>
           <h1 className="text-4xl md:text-6xl font-serif text-brand-charcoal mb-8 font-light tracking-tight leading-tight">
-            Pioneering Vertical Artistry &amp; Interior Architecture
+            Pioneering Vertical Wall Printing Artistry
           </h1>
           <p className="text-brand-secondaryText font-light text-base md:text-lg leading-relaxed">
-            At SV Walls &amp; Interiors, we exist to redefine spaces. Combining high-resolution German vertical printing technology with premium design and custom fluted wood paneling, we translate digital dreams into physical, structural luxury.
+            At SV Walls, we exist to redefine vertical surfaces. Combining high-resolution German vertical printing technology with custom digital artwork calibration, we translate digital dreams into physical direct-to-wall art.
           </p>
         </div>
 
@@ -52,8 +52,8 @@ export default function About() {
         <div className="grid md:grid-cols-3 gap-8 mb-32">
           {[
             { icon: Eye, title: "Our Vision", desc: "To eliminate the limitations of wallpaper and hand-painted murals, offering flawless scale, precision, and longevity directly onto the structural elements of modern architecture." },
-            { icon: Compass, title: "Our Process", desc: "From calibration proofing, surface priming, to UV printing and carpentry installation, every millimeter is aligned with elite execution guidelines." },
-            { icon: Users, title: "Our Promise", desc: "We coordinate directly with interior designers, commercial developers, and private homeowners to ensure high-end aesthetic compatibility." }
+            { icon: Compass, title: "Our Process", desc: "From calibration proofing, surface priming, to UV printing execution, every millimeter is aligned with elite quality guidelines." },
+            { icon: Users, title: "Our Promise", desc: "We coordinate directly with architects, commercial developers, and private homeowners to ensure high-end aesthetic compatibility." }
           ].map((val, idx) => (
             <motion.div
               key={idx}

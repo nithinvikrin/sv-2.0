@@ -12,17 +12,17 @@ const reviews = [
     name: "Elena Rostova",
     role: "CEO, Roasters Café",
     rating: 5,
-    text: "SV Walls did a feature wall print in our lobby, as well as customized 3D panels behind our counter. The process was fast, completely clean, and transformed our branding."
+    text: "SV Walls did a feature wall print in our lobby, as well as customized artwork behind our counter. The process was fast, completely clean, and transformed our branding."
   },
   {
     name: "David K.",
     role: "Melbourne Boutique Hotel",
     rating: 5,
-    text: "Remarkable service. We had several custom TV entertainment units built with 3D panels, and they look stunning. The attention to detail in the craftsmanship is outstanding."
+    text: "Remarkable service. We had several custom feature wall murals printed across our suites, and they look stunning. The attention to detail in the printing is outstanding."
   },
   {
     name: "Sarah Jenkins",
-    role: "Interior Designer",
+    role: "Design Consultant",
     rating: 5,
     text: "As a designer, I need perfection. SV Walls delivered exactly that. The UV colors are extremely vibrant and matches our print proof precisely."
   }

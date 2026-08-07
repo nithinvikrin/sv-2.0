@@ -64,7 +64,7 @@ const WHAT_WE_DO = [
   },
   {
     icon: HomeIcon,
-    title: "Home Interior Walls",
+    title: "Residential Accent Walls",
     desc: "Add personalized art, patterns, or educational graphics in living rooms, master bedrooms, and children's rooms.",
     image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"
   },
@@ -188,18 +188,18 @@ const REVIEWS = [
     role: "CEO, Roasters Café",
     rating: 5,
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
-    text: "SV Walls did a feature wall print in our lobby, as well as customized 3D panels behind our counter. The process was fast, completely clean, and transformed our branding."
+    text: "SV Walls did a feature wall print in our lobby, as well as customized artwork behind our counter. The process was fast, completely clean, and transformed our branding."
   },
   {
     name: "David K.",
     role: "Melbourne Boutique Hotel",
     rating: 5,
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
-    text: "Remarkable service. We had several custom TV entertainment units built with 3D panels, and they look stunning. The attention to detail in the craftsmanship is outstanding."
+    text: "Remarkable service. We had several custom feature wall murals printed across our suites, and they look stunning. The attention to detail in the printing is outstanding."
   },
   {
     name: "Sarah Jenkins",
-    role: "Interior Designer",
+    role: "Design Consultant",
     rating: 5,
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
     text: "As a designer, I need perfection. SV Walls delivered exactly that. The UV colors are extremely vibrant and matches our print proof precisely."

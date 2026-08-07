@@ -52,7 +52,7 @@ export default function Preloader({ onComplete }) {
             >
               <img 
                 src="/images/logo.png" 
-                alt="SV Walls & Interiors" 
+                alt="SV Walls" 
                 className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(182,141,64,0.15)]"
               />
             </motion.div>
@@ -65,7 +65,7 @@ export default function Preloader({ onComplete }) {
               className="overflow-hidden"
             >
               <h2 className="text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold font-sans mb-1">
-                Vertical Wall Printing &amp; Custom Interiors
+                Vertical Wall Printing Solutions
               </h2>
             </motion.div>
  

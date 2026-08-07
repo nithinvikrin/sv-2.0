@@ -16,36 +16,36 @@ const SERVICES = [
     image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80"
   },
   {
-    icon: Layers,
-    title: "Custom 3D Accent Panels",
-    description: "Elegant decorative structures, incorporating fluted wood, metallic trims, and structured geometric backing panels.",
+    icon: Sparkles,
+    title: "Custom Murals & Residential Art",
+    description: "Photorealistic fine art murals, nature scenes, and personalized family artwork printed direct to bedroom or living room walls.",
     features: [
-      "Tailor-made fluted timber and MDF layout",
-      "Subtle integration of LED backlight glow profiles",
-      "Adds rich tactile depth to flat walls",
-      "Finished with premium luxury paint"
+      "Tailor-made photographic scale adjustment",
+      "Vibrant eco-friendly, odorless UV inks",
+      "Adds rich tactile visual depth to flat walls",
+      "Finished with long-lasting UV protection"
     ],
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
   },
   {
-    icon: Sparkles,
-    title: "Complete Entertainment &amp; TV Consoles",
-    description: "Luxury custom-built media spaces, blending custom timber fluted panel backdrops, floating consoles, and hidden cord routing.",
+    icon: Layers,
+    title: "Commercial & Corporate Branding",
+    description: "High-impact vertical printing for corporate logos, mission statements, lobby accents, retail feature walls, and hospitality themes.",
     features: [
-      "Integrated luxury cabinet systems",
-      "Seamless hidden wire and socket routing",
-      "Built to complement premium TV panels",
-      "Premium luxury styling options"
+      "Exact Pantone & corporate color matching",
+      "High-speed execution with minimal workplace downtime",
+      "Durable print withstands commercial cleaning",
+      "Scalable to oversized feature wall dimensions"
     ],
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
 const SURFACES = [
-  { surface: "Plasterboard", printing: "Excellent compatibility, smooth texture, highest DPI print density.", panels: "Fast installation, standard mounting studs." },
-  { surface: "Glass & Acrylic", printing: "Requires clear primer bonding coat, prints mirror-reverse, backlights look beautiful.", panels: "Adhesive bond only." },
-  { surface: "Brick & Stone", printing: "Sensors track deep grooves, creates beautiful industrial-chic art.", panels: "Requires structural anchors." },
-  { surface: "Wood & Veneers", printing: "Excellent ink absorption, highlights wood grains naturally.", panels: "Native compatible, beautiful wood-on-wood layerings." }
+  { surface: "Plasterboard", printing: "Excellent compatibility, smooth texture, highest DPI print density.", finish: "Smooth texture, standard priming." },
+  { surface: "Glass & Acrylic", printing: "Requires clear primer bonding coat, prints mirror-reverse, backlights look beautiful.", finish: "Clear bonding coat, flawless mirror-printing." },
+  { surface: "Brick & Stone", printing: "Sensors track deep grooves, creates beautiful industrial-chic art.", finish: "Surface grooving tracking, rustic finish." },
+  { surface: "Wood & Veneers", printing: "Excellent ink absorption, highlights wood grains naturally.", finish: "Highlights natural wood grain textures." }
 ];
 
 export default function Services() {
@@ -67,7 +67,7 @@ export default function Services() {
             Bespoke Services for Elite Spaces
           </h1>
           <p className="text-brand-secondaryText font-light text-base md:text-lg leading-relaxed">
-            From direct vertical UV printing to custom-manufactured fluted panels and luxury media console construction, we bring master-class finishing standards to every vertical element.
+            From direct vertical UV printing to custom-calibrated graphic wall murals, we bring master-class finishing standards to every vertical surface.
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export default function Services() {
                 <tr className="border-b border-brand-border text-brand-secondaryText text-xs uppercase tracking-widest">
                   <th className="py-4 px-6 font-semibold">Surface Material</th>
                   <th className="py-4 px-6 font-semibold">UV Printing Compatibility</th>
-                  <th className="py-4 px-6 font-semibold">3D Panel Mounting</th>
+                  <th className="py-4 px-6 font-semibold">Surface Preparation &amp; Finish</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-brand-border font-light text-brand-secondaryText">
@@ -153,7 +153,7 @@ export default function Services() {
                   <tr key={idx} className="hover:bg-[#F5F1EA]/30 transition-colors">
                     <td className="py-5 px-6 font-medium text-brand-charcoal">{item.surface}</td>
                     <td className="py-5 px-6 leading-relaxed">{item.printing}</td>
-                    <td className="py-5 px-6 leading-relaxed">{item.panels}</td>
+                    <td className="py-5 px-6 leading-relaxed">{item.finish}</td>
                   </tr>
                 ))}
               </tbody>

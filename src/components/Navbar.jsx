@@ -43,7 +43,7 @@ export default function Navbar() {
             <div className="h-10 md:h-12 overflow-hidden relative">
               <img 
                 src="/images/logo.png" 
-                alt="SV Walls & Interiors" 
+                alt="SV Walls" 
                 className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
               />

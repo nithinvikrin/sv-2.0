@@ -5,7 +5,7 @@ import QuoteCalculator from '../components/QuoteCalculator';
 export default function Contact() {
   const handleWhatsApp = () => {
     const phoneNumber = "61400000000";
-    const message = encodeURIComponent("Hello SV Walls & Interiors! I'd like to get a quote/consultation for a wall printing or custom interior project.");
+    const message = encodeURIComponent("Hello SV Walls! I'd like to get a quote/consultation for a vertical wall printing project.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -27,14 +27,14 @@ export default function Contact() {
             Let's Collaborate On Your Walls
           </h1>
           <p className="text-brand-secondaryText font-light text-base md:text-lg leading-relaxed">
-            Have questions about preparation, layouts, pricing, or fluted panels? Use our estimator below, send us a project request, or contact us directly via WhatsApp.
+            Have questions about surface preparation, layouts, pricing, or high-resolution printing? Use our estimator below, send us a project request, or contact us directly via WhatsApp.
           </p>
         </div>
 
         {/* Info Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {[
-            { icon: Mail, title: "Email Inquiry", desc: "For blueprints, layout files, or general partnerships.", link: "mailto:info@svwallsandinteriors.com", action: "info@svwallsandinteriors.com" },
+            { icon: Mail, title: "Email Inquiry", desc: "For artwork files, layout proofs, or general partnerships.", link: "mailto:info@svwalls.com", action: "info@svwalls.com" },
             { icon: Phone, title: "Phone Support", desc: "Speak directly with our technical installation lead.", link: "tel:+61400000000", action: "+61 400 000 000" },
             { icon: MapPin, title: "Service Area", desc: "Melbourne metro and surrounding regions in Victoria.", link: "#", action: "Melbourne, Victoria, Australia" }
           ].map((item, idx) => (

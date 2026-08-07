@@ -7,51 +7,51 @@ const galleryCategories = ["All", "Wall Printing", "Commercial", "3D Panels & TV
 const galleryItems = [
   {
     id: 1,
-    title: "Living Room Custom Botanical Wall Print",
+    title: "Jesus Christ Wall Printing",
+    category: "Wall Printing",
+    image: "https://images.unsplash.com/photo-1548625361-185e786b8c8d?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 2,
+    title: "Kids Room – Doraemon Wall Printing",
+    category: "Wall Printing",
+    image: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 3,
+    title: "Hall – Custom Wall Design Printing",
     category: "Wall Printing",
     image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 2,
+    id: 4,
     title: "Corporate Lobby Geometric Accent Wall",
     category: "Commercial",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 3,
+    id: 5,
     title: "Luxury TV Console with Gold Traced 3D Panels",
     category: "3D Panels & TV Units",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 4,
+    id: 6,
     title: "Cozy Bedroom Accent Fluted Backdrop",
     category: "Residential",
     image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 5,
-    title: "Modern Café Feature Abstract Artwork",
-    category: "Wall Printing",
-    image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 6,
+    id: 7,
     title: "Corporate Boardroom Sleek Wood Panels",
     category: "3D Panels & TV Units",
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: 7,
+    id: 8,
     title: "Retail Boutique Brand Mural Printing",
     category: "Commercial",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 8,
-    title: "Custom Modern Nursery Wall Graphics",
-    category: "Residential",
-    image: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80"
   }
 ];
 

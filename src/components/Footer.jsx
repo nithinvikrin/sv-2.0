@@ -7,7 +7,7 @@ export default function Footer() {
 
   const handleWhatsAppRedirect = () => {
     const phoneNumber = "61400000000";
-    const message = encodeURIComponent("Hello SV Walls & Interiors! I'd like to get a quote for a vertical wall printing project.");
+    const message = encodeURIComponent("Hello SV Walls! I'd like to get a quote for a vertical wall printing project.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -21,13 +21,13 @@ export default function Footer() {
             <Link to="/">
               <img 
                 src="/images/logo.png" 
-                alt="SV Walls & Interiors" 
+                alt="SV Walls" 
                 className="h-16 w-auto mb-6 object-contain"
                 style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
               />
             </Link>
             <p className="text-brand-secondaryText font-light text-sm leading-relaxed mb-6">
-              Transforming your walls with premium vertical wall printing technology and bespoke luxury interior designs.
+              Transforming your walls with premium vertical wall printing technology and custom direct-to-wall murals.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-brand-secondaryText hover:text-brand-gold transition-colors text-sm font-light">
                 <Mail className="w-4 h-4 text-brand-gold" />
-                <a href="mailto:info@svwallsandinteriors.com">info@svwallsandinteriors.com</a>
+                <a href="mailto:info@svwalls.com">info@svwalls.com</a>
               </li>
               <li className="flex items-center gap-3 text-brand-secondaryText hover:text-brand-gold transition-colors text-sm font-light">
                 <Phone className="w-4 h-4 text-brand-gold" />
@@ -70,7 +70,7 @@ export default function Footer() {
         {/* Legal bar */}
         <div className="border-t border-brand-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-brand-secondaryText/70 text-xs font-light">
-            &copy; {currentYear} SV Walls &amp; Interiors. All Rights Reserved.
+            &copy; {currentYear} SV Walls. All Rights Reserved.
           </p>
           <p className="text-brand-secondaryText/70 text-xs font-light">
             Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-charcoal transition-colors font-medium">Vikrin pvt ltd</a>
