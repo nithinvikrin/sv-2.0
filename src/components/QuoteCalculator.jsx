@@ -133,12 +133,12 @@ export default function QuoteCalculator() {
                         onChange={(e) => setSurfaceType(e.target.value)}
                         className="bg-brand-bgDark border border-brand-border rounded-xl px-4 py-3.5 text-brand-charcoal text-xs focus:outline-none focus:border-brand-gold/60 focus:ring-1 focus:ring-brand-gold/60 transition-all"
                       >
-                        <option>Plaster Wall</option>
-                        <option>Wood Panel</option>
-                        <option>Concrete / Brick</option>
-                        <option>Glass / Acrylic</option>
-                        <option>Tiles / Ceramic</option>
-                        <option>Feature Wall Print</option>
+                        <option>Living Room / Hall Wall Printing</option>
+                        <option>Kids Room Wall Printing (Doraemon & Themes)</option>
+                        <option>Jesus Christ / Devotional Wall Printing</option>
+                        <option>Commercial & Branding Wall Printing</option>
+                        <option>Plaster & Drywall Feature Print</option>
+                        <option>Glass / Acrylic / Wood Wall Print</option>
                       </select>
                     </div>
                   </div>

@@ -48,7 +48,7 @@ export default function Preloader({ onComplete }) {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="w-48 h-48 mb-6"
+              className="w-64 h-64 md:w-72 md:h-72 mb-6"
             >
               <img 
                 src="/images/logo.png" 

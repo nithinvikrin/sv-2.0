@@ -2,54 +2,54 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
 
-const galleryCategories = ["All", "Wall Printing", "Commercial", "3D Panels & TV Units", "Residential"];
+const galleryCategories = ["All", "Wall Printing", "Kids Room", "Hall & Living Room", "Devotional & Spiritual", "Commercial"];
 
 const galleryItems = [
   {
     id: 1,
     title: "Jesus Christ Wall Printing",
-    category: "Wall Printing",
+    category: "Devotional & Spiritual",
     image: "https://images.unsplash.com/photo-1548625361-185e786b8c8d?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
     title: "Kids Room – Doraemon Wall Printing",
-    category: "Wall Printing",
+    category: "Kids Room",
     image: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
     title: "Hall – Custom Wall Design Printing",
-    category: "Wall Printing",
+    category: "Hall & Living Room",
     image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 4,
-    title: "Corporate Lobby Geometric Accent Wall",
+    title: "Corporate Lobby Geometric Accent Wall Print",
     category: "Commercial",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 5,
-    title: "Luxury TV Console with Gold Traced 3D Panels",
-    category: "3D Panels & TV Units",
+    title: "Luxury Hall Accent Wall Print",
+    category: "Hall & Living Room",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 6,
-    title: "Cozy Bedroom Accent Fluted Backdrop",
-    category: "Residential",
+    title: "Cozy Bedroom Accent Wall Print",
+    category: "Wall Printing",
     image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 7,
-    title: "Corporate Boardroom Sleek Wood Panels",
-    category: "3D Panels & TV Units",
+    title: "Corporate Boardroom Wall Print",
+    category: "Commercial",
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 8,
-    title: "Retail Boutique Brand Mural Printing",
+    title: "Retail Boutique Brand Mural Print",
     category: "Commercial",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
   }

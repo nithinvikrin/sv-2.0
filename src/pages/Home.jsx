@@ -78,7 +78,7 @@ const WHAT_WE_DO = [
     icon: Landmark,
     title: "Religious & Artistic Designs",
     desc: "Bespoke high-fidelity printing of intricate religious motifs, temples, and traditional fine art direct to surface.",
-    image: "https://images.unsplash.com/photo-1609137144813-2d5743b17789?auto=format&fit=crop&w=600&q=80"
+    image: "/images/religious_art.png"
   }
 ];
 
@@ -138,7 +138,7 @@ const WHY_CHOOSE_US = [
     icon: Clock, 
     title: "Fast Installation", 
     desc: "Rig setup and printing completes within hours. Zero mess, zero odors.",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&w=600&q=80"
+    image: "/images/fast_installation.png"
   },
   { 
     icon: Sparkles, 
@@ -169,10 +169,10 @@ const APPLICATIONS = [
   { title: "Café", image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" },
   { title: "Restaurant", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" },
   { title: "Hotel", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" },
-  { title: "School", image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80" },
-  { title: "Hospital", image: "https://images.unsplash.com/photo-1586773860418-d3b3de97e683?auto=format&fit=crop&w=600&q=80" },
+  { title: "School", image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" },
+  { title: "Hospital", image: "/images/hospital.png" },
   { title: "Retail Store", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" },
-  { title: "Temple", image: "https://images.unsplash.com/photo-1609137144813-2d5743b17789?auto=format&fit=crop&w=600&q=80" }
+  { title: "Temple", image: "/images/temple.png" }
 ];
 
 const REVIEWS = [

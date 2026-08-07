@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo Brand */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="h-10 md:h-12 overflow-hidden relative">
+            <div className="h-16 md:h-24 relative flex items-center">
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls" 
