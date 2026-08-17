@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -7,9 +7,7 @@ import {
   Printer, 
   ShieldCheck, 
   MapPin, 
-  Sparkles, 
-  ChevronDown, 
-  MessageSquare 
+  Sparkles 
 } from 'lucide-react';
 
 const STATS_DATA = [
@@ -127,7 +125,7 @@ export default function Hero() {
             <span>PREMIUM VERTICAL WALL PRINTING</span>
           </motion.div>
 
-          {/* Main Editorial Heading - Decreased Text Sizes */}
+          {/* Main Editorial Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,7 +140,7 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Subheading / Description - Decreased Text Size */}
+          {/* Subheading / Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -152,7 +150,7 @@ export default function Hero() {
             High-resolution vertical wall printing solutions that bring your imagination to life.
           </motion.p>
 
-          {/* CTA Buttons - Decreased Button & Text Sizes */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -182,7 +180,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Trust / Statistics Bar & Bottom Interactivity - Scaled Down */}
+      {/* Trust / Statistics Bar */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full mt-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -212,55 +210,9 @@ export default function Hero() {
             })}
           </div>
         </motion.div>
-
-        {/* Bottom Interaction Bar (Scroll Down + Let's Talk Button) */}
-        <div className="flex items-center justify-between mt-6 pt-2">
-          {/* Empty Left Placeholder to balance center scroll */}
-          <div className="hidden sm:block w-24" />
-
-          {/* Bottom Center: Scroll Down */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="flex flex-col items-center gap-2 mx-auto cursor-pointer group"
-            onClick={() => {
-              window.scrollTo({ top: window.innerHeight * 0.9, behavior: 'smooth' });
-            }}
-          >
-            <span className="text-[9px] uppercase tracking-[0.3em] text-white/50 font-bold group-hover:text-[#C28A46] transition-colors">
-              SCROLL DOWN
-            </span>
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              className="w-8 h-8 rounded-full border border-white/20 group-hover:border-[#C28A46] flex items-center justify-center transition-colors bg-white/5"
-            >
-              <ChevronDown className="w-4 h-4 text-white/70 group-hover:text-[#C28A46] transition-colors" />
-            </motion.div>
-          </motion.div>
-
-          {/* Bottom Right: Floating Gold Chat Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex items-center gap-3"
-          >
-            <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] font-semibold text-[#C28A46]">
-              Let's Talk
-            </span>
-            <Link
-              to="/contact"
-              className="w-11 h-11 rounded-full bg-[#C28A46] text-[#0B0C0E] flex items-center justify-center shadow-[0_0_20px_rgba(194,138,70,0.4)] hover:scale-110 hover:bg-[#d89b4f] transition-all duration-300"
-              aria-label="Let's Talk - Contact Us"
-            >
-              <MessageSquare className="w-5 h-5 fill-current" />
-            </Link>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
 }
+
 
