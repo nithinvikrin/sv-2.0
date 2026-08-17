@@ -77,23 +77,30 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-[100vh] min-h-[100svh] w-full bg-[#0B0C0E] text-white flex flex-col justify-between overflow-hidden pt-28 pb-8 md:pt-36 md:pb-12"
     >
-      {/* Photorealistic Background Layer */}
+      {/* Responsive Background Layer (Desktop Widescreen Banner vs Mobile Vertical Banner) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0">
         <motion.div
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
           className="w-full h-full"
         >
+          {/* Desktop Banner Image (Hidden on Mobile) */}
           <img
             src="/images/hero_bg.jpg"
-            alt="Luxury Vertical Wall Printing"
-            className="w-full h-full object-cover object-right md:object-center filter brightness-[0.9] contrast-[1.1]"
+            alt="Luxury Vertical Wall Printing Desktop Banner"
+            className="hidden md:block w-full h-full object-cover object-right md:object-center filter brightness-[0.9] contrast-[1.1]"
+          />
+          {/* Mobile Banner Image (Visible on Mobile) */}
+          <img
+            src="/images/hero_bg_mobile.jpg"
+            alt="Luxury Vertical Wall Printing Mobile Banner"
+            className="block md:hidden w-full h-full object-cover object-center filter brightness-[0.85] contrast-[1.1]"
           />
         </motion.div>
 
-        {/* Dark Left-to-Right Gradient Overlay for 100% Text Readability */}
+        {/* Responsive Overlay Gradient (Left-to-Right on Desktop, Top-to-Bottom on Mobile) */}
         <div 
-          className="absolute inset-0 z-10"
+          className="hidden md:block absolute inset-0 z-10"
           style={{
             background: `linear-gradient(to right, 
               #0B0C0E 0%, 
@@ -101,6 +108,16 @@ export default function Hero() {
               rgba(11,12,14,0.75) 55%, 
               rgba(11,12,14,0.3) 80%, 
               rgba(11,12,14,0.15) 100%)`
+          }}
+        />
+        <div 
+          className="block md:hidden absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(to bottom, 
+              #0B0C0E 0%, 
+              rgba(11,12,14,0.85) 45%, 
+              rgba(11,12,14,0.6) 70%, 
+              #0B0C0E 100%)`
           }}
         />
 
