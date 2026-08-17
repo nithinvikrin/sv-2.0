@@ -121,19 +121,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="inline-flex items-center gap-3 text-[#C28A46] text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-6"
+            className="inline-flex items-center gap-2.5 text-[#C28A46] text-[10px] md:text-xs font-semibold uppercase tracking-[0.25em] mb-4"
           >
-            <span className="w-8 h-[2px] bg-[#C28A46] inline-block" />
+            <span className="w-6 h-[1.5px] bg-[#C28A46] inline-block" />
             <span>PREMIUM VERTICAL WALL PRINTING</span>
           </motion.div>
 
-          {/* Main Editorial Heading */}
+          {/* Main Editorial Heading - Decreased Text Sizes */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             style={{ fontFamily: 'Cinzel, "Playfair Display", Georgia, serif' }}
-            className="text-[44px] sm:text-[60px] md:text-[72px] lg:text-[76px] xl:text-[84px] font-medium text-white leading-[1.04] tracking-tight mb-6"
+            className="text-[32px] sm:text-[44px] md:text-[52px] lg:text-[58px] xl:text-[64px] font-medium text-white leading-[1.06] tracking-tight mb-5"
           >
             Transform Your<br />
             Walls Into<br />
@@ -142,30 +142,30 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Subheading / Description */}
+          {/* Subheading / Description - Decreased Text Size */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4, ease: 'easeOut' }}
-            className="text-white/80 font-sans text-base md:text-lg lg:text-xl font-normal leading-relaxed max-w-lg mb-10"
+            className="text-white/80 font-sans text-xs md:text-sm lg:text-base font-normal leading-relaxed max-w-md mb-8"
           >
             High-resolution vertical wall printing solutions that bring your imagination to life.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Decreased Button & Text Sizes */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center"
+            className="flex flex-col sm:flex-row gap-3.5 items-stretch sm:items-center"
           >
             {/* Primary CTA */}
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(194,138,70,0.35)] hover:shadow-[0_0_40px_rgba(194,138,70,0.5)] hover:scale-[1.03] group"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(194,138,70,0.3)] hover:shadow-[0_0_35px_rgba(194,138,70,0.45)] hover:scale-[1.02] group"
             >
               <span>GET A FREE QUOTE</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
 
             {/* Secondary CTA */}
@@ -173,38 +173,38 @@ export default function Hero() {
               onClick={() => {
                 document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 border border-white/30 hover:border-white text-white font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.03] group"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/30 hover:border-white text-white font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] group"
             >
               <span>VIEW OUR PROJECTS</span>
-              <Play className="w-3.5 h-3.5 fill-current text-white transition-transform duration-300 group-hover:scale-110" />
+              <Play className="w-3 h-3 fill-current text-white transition-transform duration-300 group-hover:scale-110" />
             </button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Trust / Statistics Bar & Bottom Interactivity */}
+      {/* Trust / Statistics Bar & Bottom Interactivity - Scaled Down */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full mt-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-[#0B0C0E]/75 backdrop-blur-xl border border-white/10 rounded-2xl p-5 md:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+          className="bg-[#0B0C0E]/75 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x divide-white/10">
             {STATS_DATA.map((stat, idx) => {
               const StatIcon = stat.icon;
               return (
                 <div 
                   key={idx} 
-                  className={`flex flex-col items-start ${idx !== 0 ? 'md:pl-8' : ''}`}
+                  className={`flex flex-col items-start ${idx !== 0 ? 'md:pl-6' : ''}`}
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <StatIcon className="w-5 h-5 text-[#C28A46] stroke-[1.5]" />
-                    <span className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-wide">
+                  <div className="flex items-center gap-2.5 mb-1">
+                    <StatIcon className="w-4 h-4 text-[#C28A46] stroke-[1.5]" />
+                    <span className="font-serif text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide">
                       {stat.value}
                     </span>
                   </div>
-                  <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/60 font-semibold">
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-white/60 font-semibold">
                     {stat.label}
                   </span>
                 </div>
