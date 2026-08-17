@@ -11,6 +11,32 @@ const FLOATING_STATS = [
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const videoRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(
+        typeof window !== 'undefined' && (
+          window.innerWidth < 768 || 
+          ('ontouchstart' in window) || 
+          (navigator.maxTouchPoints > 0)
+        )
+      );
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Ensure background video attempts autoplay on iOS Safari without blocking rendering
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay handled gracefully by inline fallback poster image
+      });
+    }
+  }, []);
 
   // Mouse Parallax Setup
   const mouseX = useMotionValue(0);
@@ -24,6 +50,7 @@ export default function Hero() {
   const bgY = useSpring(useMotionValue(0), springConfig);
 
   useEffect(() => {
+    if (isMobile) return; // Skip mouse listener on touch devices
     const handleMouseMove = (e) => {
       if (!containerRef.current) return;
       const { width, height } = containerRef.current.getBoundingClientRect();
@@ -38,7 +65,7 @@ export default function Hero() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [textX, textY, bgX, bgY]);
+  }, [textX, textY, bgX, bgY, isMobile]);
 
   // Scroll Fade-out Transition Setup
   const { scrollYProgress } = useScroll({
@@ -46,15 +73,17 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.55], [0, -40]);
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.15]);
+  const rawContentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const contentOpacity = isMobile ? 1 : rawContentOpacity;
+  const rawVideoOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.15]);
+  const videoOpacity = isMobile ? 1 : rawVideoOpacity;
 
-  // Line-by-line heading reveal variants
+  // Line-by-line heading reveal variants (Safe for WebKit Mobile Safari)
   const lineVariants = {
-    hidden: { y: "110%" },
+    hidden: { y: isMobile ? 0 : "110%", opacity: isMobile ? 0 : 1 },
     visible: {
       y: 0,
+      opacity: 1,
       transition: {
         duration: 1.1,
         ease: [0.16, 1, 0.3, 1]
@@ -75,7 +104,7 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-bgDark"
+      className="relative min-h-screen min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-brand-bgDark py-16 md:py-0"
     >
       {/* Background Video Layer */}
       <motion.div
@@ -99,11 +128,13 @@ export default function Hero() {
           className="w-full h-full"
         >
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
+            poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80"
             className="w-full h-full object-cover filter brightness-[1.12] contrast-[1.16] saturate-[1.18]"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
@@ -127,7 +158,7 @@ export default function Hero() {
           y: textY,
           opacity: contentOpacity
         }}
-        className="relative z-20 max-w-5xl mx-auto px-6 md:px-12 text-center flex flex-col items-center select-none -translate-y-8 md:-translate-y-12"
+        className="relative z-20 max-w-5xl mx-auto px-6 md:px-12 text-center flex flex-col items-center select-none md:-translate-y-12"
       >
         {/* Luxury Badge */}
         <motion.div

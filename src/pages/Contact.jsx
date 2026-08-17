@@ -13,8 +13,8 @@ export default function Contact() {
     <div className="pt-32 pb-24 relative overflow-hidden">
       
       {/* Background ambient lighting effects */}
-      <div className="absolute top-1/4 left-1/3 w-[450px] h-[450px] bg-brand-glowPurple/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-brand-glowBlue/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 w-[250px] h-[250px] md:w-[450px] md:h-[450px] bg-brand-glowPurple/5 rounded-full blur-[60px] md:blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] md:w-[450px] md:h-[450px] bg-brand-glowBlue/5 rounded-full blur-[60px] md:blur-[140px] pointer-events-none transform-gpu" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         

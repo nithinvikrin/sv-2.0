@@ -13,12 +13,18 @@
     background-color: rgb(var(--color-bg-dark));
     color: #2F3138;
     font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
+    width: 100%;
     overflow-x: hidden;
     background: #F8F6F2;
     color: #2F3138;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
   }
 
   /* Custom Premium Scrollbar */

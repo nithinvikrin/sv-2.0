@@ -19,45 +19,45 @@ export default function App() {
       <SmoothScroll>
         <div className="bg-brand-bgDark min-h-screen relative selection:bg-brand-gold selection:text-white">
           
-          {/* Global Ambient Glow Blobs - Slow Animated Lights */}
+          {/* Global Ambient Glow Blobs - Slow Animated Lights (Optimized for Mobile WebKit GPU performance) */}
           <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
             <motion.div 
               animate={{
-                x: [0, 80, -40, 0],
-                y: [0, -60, 50, 0],
-                scale: [1, 1.15, 0.9, 1],
+                x: [0, 40, -20, 0],
+                y: [0, -30, 25, 0],
+                scale: [1, 1.1, 0.95, 1],
               }}
               transition={{
                 duration: 25,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="absolute top-[-10%] left-[5%] w-[550px] h-[550px] bg-brand-glowPurple/3 rounded-full blur-[140px]" 
+              className="absolute top-[-10%] left-[5%] w-[280px] h-[280px] md:w-[550px] md:h-[550px] bg-brand-glowPurple/3 rounded-full blur-[60px] md:blur-[140px] transform-gpu" 
             />
             <motion.div 
               animate={{
-                x: [0, -70, 60, 0],
-                y: [0, 80, -60, 0],
-                scale: [1, 1.1, 0.95, 1],
+                x: [0, -40, 30, 0],
+                y: [0, 40, -30, 0],
+                scale: [1, 1.08, 0.95, 1],
               }}
               transition={{
                 duration: 28,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="absolute bottom-[-10%] right-[10%] w-[650px] h-[650px] bg-brand-glowBlue/3 rounded-full blur-[160px]" 
+              className="absolute bottom-[-10%] right-[10%] w-[300px] h-[300px] md:w-[650px] md:h-[650px] bg-brand-glowBlue/3 rounded-full blur-[70px] md:blur-[160px] transform-gpu" 
             />
             <motion.div 
               animate={{
-                x: [0, 40, -50, 0],
-                y: [0, 50, -40, 0],
+                x: [0, 20, -25, 0],
+                y: [0, 25, -20, 0],
               }}
               transition={{
                 duration: 22,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-brand-gold/2 rounded-full blur-[130px]" 
+              className="absolute top-[40%] right-[10%] md:right-[20%] w-[220px] h-[220px] md:w-[400px] md:h-[400px] bg-brand-gold/2 rounded-full blur-[50px] md:blur-[130px] transform-gpu" 
             />
           </div>
 
