@@ -1,24 +1,49 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Play, Sparkles, Shield, Printer } from 'lucide-react';
+import { 
+  ArrowRight, 
+  Play, 
+  Printer, 
+  ShieldCheck, 
+  MapPin, 
+  Sparkles, 
+  ChevronDown, 
+  MessageSquare 
+} from 'lucide-react';
 
-const FLOATING_STATS = [
-  { icon: Printer, value: "500+", label: "Walls Printed" },
-  { icon: Shield, value: "100%", label: "UV Resistant" },
-  { icon: Sparkles, value: "Australia", label: "Wide Service" }
+const STATS_DATA = [
+  {
+    icon: Printer,
+    value: '500+',
+    label: 'WALLS PRINTED'
+  },
+  {
+    icon: ShieldCheck,
+    value: '100%',
+    label: 'UV RESISTANT'
+  },
+  {
+    icon: MapPin,
+    value: 'AUSTRALIA',
+    label: 'WIDE SERVICE'
+  },
+  {
+    icon: Sparkles,
+    value: 'PREMIUM',
+    label: 'QUALITY PRINTS'
+  }
 ];
 
 export default function Hero() {
   const containerRef = useRef(null);
-  const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(
         typeof window !== 'undefined' && (
-          window.innerWidth < 768 || 
+          window.innerWidth < 1024 || 
           ('ontouchstart' in window) || 
           (navigator.maxTouchPoints > 0)
         )
@@ -29,256 +54,213 @@ export default function Hero() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Ensure background video attempts autoplay on iOS Safari without blocking rendering
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay handled gracefully by inline fallback poster image
-      });
-    }
-  }, []);
-
-  // Mouse Parallax Setup
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Spring configurations for smooth luxury feel
-  const springConfig = { damping: 40, stiffness: 120, mass: 0.6 };
+  // Smooth mouse subtle parallax on desktop
+  const springConfig = { damping: 40, stiffness: 100, mass: 0.8 };
   const textX = useSpring(useMotionValue(0), springConfig);
   const textY = useSpring(useMotionValue(0), springConfig);
-  const bgX = useSpring(useMotionValue(0), springConfig);
-  const bgY = useSpring(useMotionValue(0), springConfig);
 
   useEffect(() => {
-    if (isMobile) return; // Skip mouse listener on touch devices
+    if (isMobile) return;
     const handleMouseMove = (e) => {
       if (!containerRef.current) return;
       const { width, height } = containerRef.current.getBoundingClientRect();
       const xVal = (e.clientX - width / 2) / (width / 2);
       const yVal = (e.clientY - height / 2) / (height / 2);
-
-      textX.set(-xVal * 12);
-      textY.set(-yVal * 12);
-      bgX.set(xVal * 8);
-      bgY.set(yVal * 8);
+      textX.set(-xVal * 10);
+      textY.set(-yVal * 10);
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [textX, textY, bgX, bgY, isMobile]);
-
-  // Scroll Fade-out Transition Setup
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const rawContentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
-  const contentOpacity = isMobile ? 1 : rawContentOpacity;
-  const rawVideoOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.15]);
-  const videoOpacity = isMobile ? 1 : rawVideoOpacity;
-
-  // Line-by-line heading reveal variants (Safe for WebKit Mobile Safari)
-  const lineVariants = {
-    hidden: { y: isMobile ? 0 : "110%", opacity: isMobile ? 0 : 1 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1.1,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
+  }, [isMobile, textX, textY]);
 
   return (
     <section
       id="home"
       ref={containerRef}
-      className="relative min-h-screen min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-brand-bgDark py-16 md:py-0"
+      className="relative min-h-[100vh] min-h-[100svh] w-full bg-[#0B0C0E] text-white flex flex-col justify-between overflow-hidden pt-28 pb-8 md:pt-36 md:pb-12"
     >
-      {/* Background Video Layer */}
-      <motion.div
-        style={{
-          opacity: videoOpacity,
-          x: bgX,
-          y: bgY
-        }}
-        className="absolute inset-0 w-full h-full pointer-events-none select-none scale-105"
-      >
-        {/* Ken Burns Effect - Slow Cinematic Scale */}
+      {/* Photorealistic Background Layer */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0">
         <motion.div
-          animate={{
-            scale: [1.02, 1.08, 1.02],
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.04, 1] }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
           className="w-full h-full"
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80"
-            className="w-full h-full object-cover filter brightness-[1.12] contrast-[1.16] saturate-[1.18]"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </motion.div>
-
-        {/* Subtle black gradient overlay to keep the video visible while making the text readable */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.25))'
-          }}
-        />
-      </motion.div>
-
-      {/* Hero Content Panel (Positioned slightly upward for visual center) */}
-      <motion.div
-        style={{
-          x: textX,
-          y: textY,
-          opacity: contentOpacity
-        }}
-        className="relative z-20 max-w-5xl mx-auto px-6 md:px-12 text-center flex flex-col items-center select-none md:-translate-y-12"
-      >
-        {/* Luxury Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/90 border border-[#C28A46]/25 text-[#B68D40] uppercase tracking-[0.25em] text-[10px] md:text-xs font-semibold mb-8 shadow-sm backdrop-blur-sm"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C28A46] animate-pulse" />
-          Vanguard Vertical UV Printing Technology
-        </motion.div>
-
-        {/* Heading - Line-by-Line Staggered Reveal */}
-        <motion.h1
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ 
-            textShadow: '0 4px 18px rgba(0,0,0,.35)',
-            fontFamily: '"Cormorant Garamond", "Playfair Display", Georgia, serif'
-          }}
-          className="text-[42px] md:text-[64px] lg:text-[84px] font-semibold text-[#F8F6F2] tracking-[-1px] leading-[1.05] mb-8 max-w-[1000px] text-center"
-        >
-          <span className="block overflow-hidden h-fit py-1">
-            <motion.span variants={lineVariants} className="block">
-              Transform Your Walls
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden h-fit py-1">
-            <motion.span variants={lineVariants} className="block">
-              Into <span style={{ color: '#C28A46' }}>Works of Art</span>
-            </motion.span>
-          </span>
-        </motion.h1>
-
-        {/* Subheading - Fades Up */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.9, ease: "easeOut" }}
-          style={{ textShadow: '0 2px 12px rgba(0,0,0,.30)' }}
-          className="text-white/92 text-lg md:text-[22px] max-w-[720px] font-normal tracking-wide mb-10 leading-relaxed"
-        >
-          Premium Vertical Wall Printing Solutions Across Australia
-        </motion.p>
-
-        {/* Buttons - Staggered Entry */}
-        <div className="flex flex-col sm:flex-row gap-5 justify-center items-center w-full max-w-md mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full sm:w-auto"
-          >
-            <Link
-              to="/contact"
-              className="block w-full sm:w-auto px-10 py-4.5 text-xs font-bold uppercase tracking-widest rounded-full text-center bg-[#2F3138] text-white hover:bg-[#C28A46] hover:scale-105 hover:shadow-[0_15px_40px_rgba(194,138,70,0.35)] transition-all duration-300 shadow-md"
-            >
-              Get a Free Quote
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.95, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full sm:w-auto"
-          >
-            <button
-              onClick={() => {
-                document.getElementById('applications')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="w-full sm:w-auto px-10 py-4.5 border border-[#C28A46] text-[#2F3138] bg-white hover:bg-[#C28A46] hover:text-white hover:scale-105 transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-2 shadow-sm"
-            >
-              View Our Projects
-              <Play className="w-3.5 h-3.5 fill-current text-current" />
-            </button>
-          </motion.div>
-        </div>
-
-        {/* Statistics - Staggered Fade Up of White Glass Cards */}
-        <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-3xl w-full border-t border-brand-border/40 pt-10">
-          {FLOATING_STATS.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 + idx * 0.12, duration: 0.8, ease: "easeOut" }}
-              whileHover={{ y: -6, scale: 1.03 }}
-              className="flex flex-col items-center p-4 rounded-2xl bg-white/75 border border-white/60 shadow-lg backdrop-blur-[16px] group cursor-pointer transition-all duration-300"
-            >
-              <stat.icon className="w-5 h-5 text-[#C28A46] mb-2 group-hover:rotate-12 transition-transform duration-300" />
-              <span className="text-xl md:text-2xl font-serif text-[#1F2937] font-semibold mb-0.5">
-                {stat.value}
-              </span>
-              <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#6F737A] font-semibold text-center leading-none">
-                {stat.label}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Smooth Scroll down indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 select-none pointer-events-none">
-        <span className="text-[9px] uppercase tracking-[0.3em] text-[#6F737A]/80 font-bold">
-          Scroll Down
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-brand-border/80 flex justify-center p-1.5"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-1.5 h-2.5 bg-[#C28A46] rounded-full"
+          <img
+            src="/images/hero_bg.jpg"
+            alt="Luxury Vertical Wall Printing"
+            className="w-full h-full object-cover object-right md:object-center filter brightness-[0.9] contrast-[1.1]"
           />
         </motion.div>
+
+        {/* Dark Left-to-Right Gradient Overlay for 100% Text Readability */}
+        <div 
+          className="absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(to right, 
+              #0B0C0E 0%, 
+              rgba(11,12,14,0.96) 35%, 
+              rgba(11,12,14,0.75) 55%, 
+              rgba(11,12,14,0.3) 80%, 
+              rgba(11,12,14,0.15) 100%)`
+          }}
+        />
+
+        {/* Ambient Top & Bottom Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0C0E]/70 via-transparent to-[#0B0C0E] z-10 pointer-events-none" />
+      </div>
+
+      {/* Main Content Area */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full flex-grow flex items-center my-auto">
+        <motion.div
+          style={{ x: textX, y: textY }}
+          className="w-full lg:w-[48%] xl:w-[45%] text-left pt-6 pb-12"
+        >
+          {/* Eyebrow Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="inline-flex items-center gap-3 text-[#C28A46] text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-6"
+          >
+            <span className="w-8 h-[2px] bg-[#C28A46] inline-block" />
+            <span>PREMIUM VERTICAL WALL PRINTING</span>
+          </motion.div>
+
+          {/* Main Editorial Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ fontFamily: 'Cinzel, "Playfair Display", Georgia, serif' }}
+            className="text-[44px] sm:text-[60px] md:text-[72px] lg:text-[76px] xl:text-[84px] font-medium text-white leading-[1.04] tracking-tight mb-6"
+          >
+            Transform Your<br />
+            Walls Into<br />
+            <span className="text-[#C28A46] italic font-serif drop-shadow-[0_4px_20px_rgba(194,138,70,0.3)]">
+              Works of Art
+            </span>
+          </motion.h1>
+
+          {/* Subheading / Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.4, ease: 'easeOut' }}
+            className="text-white/80 font-sans text-base md:text-lg lg:text-xl font-normal leading-relaxed max-w-lg mb-10"
+          >
+            High-resolution vertical wall printing solutions that bring your imagination to life.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
+            className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center"
+          >
+            {/* Primary CTA */}
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(194,138,70,0.35)] hover:shadow-[0_0_40px_rgba(194,138,70,0.5)] hover:scale-[1.03] group"
+            >
+              <span>GET A FREE QUOTE</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+
+            {/* Secondary CTA */}
+            <button
+              onClick={() => {
+                document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 border border-white/30 hover:border-white text-white font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.03] group"
+            >
+              <span>VIEW OUR PROJECTS</span>
+              <Play className="w-3.5 h-3.5 fill-current text-white transition-transform duration-300 group-hover:scale-110" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Trust / Statistics Bar & Bottom Interactivity */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full mt-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-[#0B0C0E]/75 backdrop-blur-xl border border-white/10 rounded-2xl p-5 md:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/10">
+            {STATS_DATA.map((stat, idx) => {
+              const StatIcon = stat.icon;
+              return (
+                <div 
+                  key={idx} 
+                  className={`flex flex-col items-start ${idx !== 0 ? 'md:pl-8' : ''}`}
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <StatIcon className="w-5 h-5 text-[#C28A46] stroke-[1.5]" />
+                    <span className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-wide">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/60 font-semibold">
+                    {stat.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Bottom Interaction Bar (Scroll Down + Let's Talk Button) */}
+        <div className="flex items-center justify-between mt-6 pt-2">
+          {/* Empty Left Placeholder to balance center scroll */}
+          <div className="hidden sm:block w-24" />
+
+          {/* Bottom Center: Scroll Down */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.8 }}
+            className="flex flex-col items-center gap-2 mx-auto cursor-pointer group"
+            onClick={() => {
+              window.scrollTo({ top: window.innerHeight * 0.9, behavior: 'smooth' });
+            }}
+          >
+            <span className="text-[9px] uppercase tracking-[0.3em] text-white/50 font-bold group-hover:text-[#C28A46] transition-colors">
+              SCROLL DOWN
+            </span>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+              className="w-8 h-8 rounded-full border border-white/20 group-hover:border-[#C28A46] flex items-center justify-center transition-colors bg-white/5"
+            >
+              <ChevronDown className="w-4 h-4 text-white/70 group-hover:text-[#C28A46] transition-colors" />
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom Right: Floating Gold Chat Button */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="flex items-center gap-3"
+          >
+            <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] font-semibold text-[#C28A46]">
+              Let's Talk
+            </span>
+            <Link
+              to="/contact"
+              className="w-11 h-11 rounded-full bg-[#C28A46] text-[#0B0C0E] flex items-center justify-center shadow-[0_0_20px_rgba(194,138,70,0.4)] hover:scale-110 hover:bg-[#d89b4f] transition-all duration-300"
+              aria-label="Let's Talk - Contact Us"
+            >
+              <MessageSquare className="w-5 h-5 fill-current" />
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+

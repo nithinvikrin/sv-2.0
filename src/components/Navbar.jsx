@@ -4,11 +4,12 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'HOME', href: '/' },
+  { name: 'ABOUT US', href: '/about' },
+  { name: 'SERVICES', href: '/services' },
+  { name: 'GALLERY', href: '/gallery' },
+  { name: 'TECHNOLOGY', href: '/#technology' },
+  { name: 'CONTACT', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -18,7 +19,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -27,87 +28,96 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'glass-navbar py-4 shadow-xl' 
-            : 'bg-transparent py-6 border-b border-brand-border/0'
+            ? 'bg-[#0B0C0E]/90 backdrop-blur-xl border-b border-white/10 py-4 shadow-2xl' 
+            : 'bg-transparent py-6 border-b border-white/5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Logo Brand */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="h-10 md:h-14 relative flex items-center">
+          
+          {/* Left: Brand Logo & Subtitle */}
+          <Link to="/" className="flex items-center gap-3.5 group">
+            <div className="h-10 md:h-12 flex items-center">
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls" 
-                className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
+                className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.25))" }}
               />
+            </div>
+            <div className="flex flex-col border-l border-white/20 pl-3">
+              <span className="text-white font-bold tracking-[0.2em] text-sm leading-none">
+                SIV
+              </span>
+              <span className="text-[#C28A46] font-medium tracking-[0.25em] text-[9px] mt-1 leading-none">
+                WALLS & INTERIORS
+              </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Center: Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.href;
+              const isActive = location.pathname === link.href || (link.href === '/' && location.pathname === '/');
               return (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`relative text-xs uppercase tracking-widest font-sans font-semibold transition-colors py-2 ${
-                    isActive ? 'text-brand-gold' : 'text-brand-charcoal/70 hover:text-brand-charcoal'
+                  className={`relative text-[11px] font-sans uppercase tracking-[0.2em] font-semibold transition-colors duration-300 py-2.5 ${
+                    isActive ? 'text-[#C28A46]' : 'text-white/80 hover:text-white'
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold shadow-[0_0_8px_#C28A46]"
+                      layoutId="activeNavIndicator"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-[#C28A46] shadow-[0_0_10px_#C28A46]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                 </Link>
               );
             })}
-          </div>
+          </nav>
 
-          {/* Call to Action button */}
+          {/* Right: Outlined Gold Button */}
           <div className="hidden lg:block">
             <Link
               to="/contact"
-              className="btn-shine btn-gold-glow inline-flex items-center gap-2 px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest rounded-full"
+              className="inline-flex items-center gap-2 px-6 py-2.5 border border-[#C28A46] text-[#C28A46] hover:bg-[#C28A46] hover:text-[#0B0C0E] transition-all duration-300 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full group shadow-[0_0_15px_rgba(194,138,70,0.15)]"
             >
-              Get Free Quote
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>GET FREE QUOTE</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
 
-          {/* Mobile hamburger menu toggle */}
+          {/* Mobile menu toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-brand-charcoal/80 hover:text-brand-charcoal transition-colors focus:outline-none"
+            className="lg:hidden p-2 text-white/90 hover:text-white transition-colors focus:outline-none"
             aria-label="Toggle navigation menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-6 h-6 text-[#C28A46]" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </motion.nav>
+      </motion.header>
 
-      {/* Mobile menu panel overlay */}
+      {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[72px] bg-brand-bgDark/98 backdrop-blur-2xl z-30 lg:hidden flex flex-col p-8 border-t border-brand-border overflow-y-auto"
+            className="fixed inset-0 top-[72px] bg-[#0B0C0E]/98 backdrop-blur-2xl z-40 lg:hidden flex flex-col p-8 border-t border-white/10 overflow-y-auto"
           >
-            <div className="flex flex-col gap-6 mt-12 items-center">
+            <div className="flex flex-col gap-6 mt-8 items-center">
               {navLinks.map((link, idx) => {
                 const isActive = location.pathname === link.href;
                 return (
@@ -115,15 +125,15 @@ export default function Navbar() {
                     key={link.name}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.08 }}
+                    transition={{ delay: idx * 0.06 }}
                   >
                     <Link
                       to={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-lg font-sans uppercase tracking-widest ${
+                      className={`text-base font-sans uppercase tracking-[0.25em] font-medium transition-colors ${
                         isActive
-                          ? 'text-brand-gold font-semibold text-glow-gold'
-                          : 'text-brand-charcoal/70 hover:text-brand-charcoal'
+                          ? 'text-[#C28A46] font-bold'
+                          : 'text-white/80 hover:text-white'
                       }`}
                     >
                       {link.name}
@@ -135,16 +145,15 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.08 }}
-                className="mt-8"
+                transition={{ delay: navLinks.length * 0.06 }}
+                className="mt-6 w-full max-w-xs"
               >
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="btn-gold-glow inline-flex items-center gap-2 px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-full"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-[#C28A46] text-[#C28A46] bg-transparent hover:bg-[#C28A46] hover:text-[#0B0C0E] transition-all duration-300 text-xs font-bold uppercase tracking-[0.2em] rounded-full"
                 >
-                  Get Free Quote
-                  <ArrowRight className="w-4 h-4" />
+                  GET FREE QUOTE →
                 </Link>
               </motion.div>
             </div>
@@ -154,3 +163,4 @@ export default function Navbar() {
     </>
   );
 }
+
