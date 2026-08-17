@@ -109,10 +109,10 @@ export default function Hero() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full flex-grow flex items-center my-auto">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full flex-grow flex items-center my-auto">
         <motion.div
           style={{ x: textX, y: textY }}
-          className="w-full lg:w-[48%] xl:w-[45%] text-left pt-6 pb-12"
+          className="w-full lg:w-[48%] xl:w-[45%] text-left pt-4 pb-8 md:pt-6 md:pb-12"
         >
           {/* Eyebrow Badge */}
           <motion.div
@@ -125,13 +125,13 @@ export default function Hero() {
             <span>PREMIUM VERTICAL WALL PRINTING</span>
           </motion.div>
 
-          {/* Main Editorial Heading - Scaled Down */}
+          {/* Main Editorial Heading - Full width column on mobile */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             style={{ fontFamily: 'Cinzel, "Playfair Display", Georgia, serif' }}
-            className="text-[26px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[50px] font-medium text-white leading-[1.08] tracking-tight mb-4"
+            className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] xl:text-[50px] font-medium text-white leading-[1.08] tracking-tight mb-4 w-full"
           >
             Transform Your<br />
             Walls Into<br />
@@ -140,30 +140,30 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Subheading / Description - Scaled Down */}
+          {/* Subheading / Description - Full width on mobile */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4, ease: 'easeOut' }}
-            className="text-white/80 font-sans text-[11px] md:text-xs lg:text-sm font-normal leading-relaxed max-w-sm mb-6"
+            className="text-white/80 font-sans text-xs md:text-sm lg:text-base font-normal leading-relaxed w-full max-w-full lg:max-w-md mb-6"
           >
             High-resolution vertical wall printing solutions that bring your imagination to life.
           </motion.p>
 
-          {/* CTA Buttons - Scaled Down */}
+          {/* CTA Buttons - Full width buttons on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center"
+            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-stretch sm:items-center"
           >
             {/* Primary CTA */}
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(194,138,70,0.25)] hover:shadow-[0_0_30px_rgba(194,138,70,0.4)] hover:scale-[1.02] group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(194,138,70,0.25)] hover:shadow-[0_0_30px_rgba(194,138,70,0.4)] hover:scale-[1.02] group text-center"
             >
               <span>GET A FREE QUOTE</span>
-              <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
 
             {/* Secondary CTA */}
@@ -171,30 +171,30 @@ export default function Hero() {
               onClick={() => {
                 document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 border border-white/30 hover:border-white text-white font-sans font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3 border border-white/30 hover:border-white text-white font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] group text-center"
             >
               <span>VIEW OUR PROJECTS</span>
-              <Play className="w-2.5 h-2.5 fill-current text-white transition-transform duration-300 group-hover:scale-110" />
+              <Play className="w-3 h-3 fill-current text-white transition-transform duration-300 group-hover:scale-110" />
             </button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Trust / Statistics Bar - Scaled Down */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full mt-auto">
+      {/* Trust / Statistics Bar - Full width layout on mobile */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full mt-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-[#0B0C0E]/75 backdrop-blur-xl border border-white/10 rounded-2xl p-3 md:p-4 shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+          className="bg-[#0B0C0E]/75 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] w-full"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x divide-white/10 w-full">
             {STATS_DATA.map((stat, idx) => {
               const StatIcon = stat.icon;
               return (
                 <div 
                   key={idx} 
-                  className={`flex flex-col items-start ${idx !== 0 ? 'md:pl-5' : ''}`}
+                  className={`flex flex-col items-start w-full ${idx !== 0 ? 'md:pl-5' : ''}`}
                 >
                   <div className="flex items-center gap-2 mb-0.5">
                     <StatIcon className="w-3.5 h-3.5 text-[#C28A46] stroke-[1.5]" />
@@ -202,7 +202,7 @@ export default function Hero() {
                       {stat.value}
                     </span>
                   </div>
-                  <span className="text-[8px] md:text-[9px] uppercase tracking-[0.18em] text-white/60 font-semibold">
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-white/60 font-semibold">
                     {stat.label}
                   </span>
                 </div>
