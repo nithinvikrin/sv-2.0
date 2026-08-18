@@ -167,17 +167,17 @@ export default function Hero() {
             High-resolution vertical wall printing solutions that bring your imagination to life.
           </motion.p>
 
-          {/* CTA Buttons - Full width buttons on mobile */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-stretch sm:items-center"
+            className="flex flex-row flex-wrap items-center gap-3 sm:gap-4 w-auto"
           >
             {/* Primary CTA */}
             <Link
               to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(194,138,70,0.25)] hover:shadow-[0_0_30px_rgba(194,138,70,0.4)] hover:scale-[1.02] group text-center"
+              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-[#C28A46] hover:bg-[#d89b4f] text-[#0B0C0E] font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(194,138,70,0.25)] hover:shadow-[0_0_30px_rgba(194,138,70,0.4)] hover:scale-[1.02] group text-center shrink-0"
             >
               <span>GET A FREE QUOTE</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -188,7 +188,7 @@ export default function Hero() {
               onClick={() => {
                 document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3 border border-white/30 hover:border-white text-white font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] group text-center"
+              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 border border-white/30 hover:border-white text-white font-sans font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] group text-center shrink-0"
             >
               <span>VIEW OUR PROJECTS</span>
               <Play className="w-3 h-3 fill-current text-white transition-transform duration-300 group-hover:scale-110" />

@@ -40,11 +40,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between min-h-[44px]">
           {/* Logo Brand */}
           <Link to="/" className="flex items-center gap-3 group shrink-0">
-            <div className="h-10 md:h-12 relative flex items-center">
+            <div className="h-10 md:h-12 flex items-center shrink-0">
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls" 
-                className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                className="h-10 md:h-12 w-auto max-w-[160px] md:max-w-[200px] object-contain shrink-0 transition-transform duration-500 group-hover:scale-105"
                 style={{ filter: "drop-shadow(0 2px 8px rgba(194,138,70,0.15))" }}
               />
             </div>
