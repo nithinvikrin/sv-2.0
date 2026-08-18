@@ -10,7 +10,7 @@ const PORTFOLIO = [
     id: 1,
     title: "Jesus Christ Wall Printing",
     category: "Devotional & Spiritual",
-    image: "https://images.unsplash.com/photo-1548625361-185e786b8c8d?auto=format&fit=crop&w=800&q=80"
+    image: "/images/religious_art.png"
   },
   {
     id: 2,
