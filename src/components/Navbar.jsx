@@ -33,14 +33,14 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
           isScrolled 
-            ? 'glass-navbar py-4 shadow-xl' 
-            : 'bg-transparent py-6 border-b border-brand-border/0'
+            ? 'glass-navbar py-2 shadow-xl' 
+            : 'bg-transparent py-3 border-b border-brand-border/0'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between min-h-[44px]">
           {/* Logo Brand */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="h-10 md:h-14 relative flex items-center">
+          <Link to="/" className="flex items-center gap-3 group shrink-0">
+            <div className="h-10 md:h-12 relative flex items-center">
               <img 
                 src="/images/logo.png" 
                 alt="SV Walls" 
@@ -51,14 +51,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center justify-center gap-8">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`relative text-xs uppercase tracking-widest font-sans font-semibold transition-colors py-2 ${
+                  className={`relative text-xs uppercase tracking-widest font-sans font-extrabold transition-colors py-2 inline-flex items-center justify-center leading-none ${
                     isActive ? 'text-brand-gold' : 'text-brand-charcoal/70 hover:text-brand-charcoal'
                   }`}
                 >
@@ -76,12 +76,12 @@ export default function Navbar() {
           </div>
 
           {/* Call to Action button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block shrink-0">
             <Link
               to="/contact"
-              className="btn-shine btn-gold-glow inline-flex items-center gap-2 px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest rounded-full"
+              className="btn-shine btn-gold-glow inline-flex items-center justify-center gap-2 px-6 py-2.5 text-[10px] font-extrabold uppercase tracking-widest rounded-full leading-none"
             >
-              Get Free Quote
+              <span>Get Free Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -154,5 +154,3 @@ export default function Navbar() {
     </>
   );
 }
-
-
