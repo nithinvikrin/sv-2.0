@@ -105,9 +105,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[72px] bg-brand-bgDark/98 backdrop-blur-2xl z-30 lg:hidden flex flex-col p-8 border-t border-brand-border overflow-y-auto"
+            className="fixed inset-x-0 bottom-0 top-[56px] md:top-[64px] bg-[#0B0C0E]/98 text-white backdrop-blur-2xl z-50 lg:hidden flex flex-col p-6 border-t border-white/10 overflow-y-auto"
           >
-            <div className="flex flex-col gap-6 mt-12 items-center">
+            <div className="flex flex-col gap-6 mt-6 items-center">
               {navLinks.map((link, idx) => {
                 const isActive = location.pathname === link.href;
                 return (
@@ -120,10 +120,10 @@ export default function Navbar() {
                     <Link
                       to={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-lg font-sans uppercase tracking-widest ${
+                      className={`text-base font-sans font-bold uppercase tracking-widest ${
                         isActive
-                          ? 'text-brand-gold font-semibold text-glow-gold'
-                          : 'text-brand-charcoal/70 hover:text-brand-charcoal'
+                          ? 'text-[#C28A46]'
+                          : 'text-white/80 hover:text-white'
                       }`}
                     >
                       {link.name}
@@ -136,14 +136,14 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
-                className="mt-8"
+                className="mt-6"
               >
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="btn-gold-glow inline-flex items-center gap-2 px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-full"
+                  className="bg-[#C28A46] text-[#0B0C0E] hover:bg-[#d89b4f] inline-flex items-center gap-2 px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-full transition-all shadow-md"
                 >
-                  Get Free Quote
+                  <span>Get Free Quote</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </motion.div>
