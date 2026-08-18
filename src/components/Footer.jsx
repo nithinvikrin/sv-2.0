@@ -73,7 +73,7 @@ export default function Footer() {
             &copy; {currentYear} SV Walls. All Rights Reserved.
           </p>
           <p className="text-brand-secondaryText/70 text-xs font-light">
-            Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-charcoal transition-colors font-medium">Vikrin pvt ltd</a>
+            Designed and Developed by <a href="https://www.vikrin.com/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-brand-charcoal transition-colors font-medium">Vikrin Pvt Ltd</a>
           </p>
         </div>
       </div>

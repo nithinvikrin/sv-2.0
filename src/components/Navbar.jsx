@@ -33,8 +33,8 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
           isScrolled 
-            ? 'glass-navbar py-2 shadow-xl' 
-            : 'bg-transparent py-3 border-b border-brand-border/0'
+            ? 'bg-white/95 backdrop-blur-md py-2 shadow-md border-b border-brand-border/40' 
+            : 'bg-white py-3 border-b border-brand-border/30 shadow-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between min-h-[44px]">
@@ -105,7 +105,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-x-0 bottom-0 top-[56px] md:top-[64px] bg-[#0B0C0E]/98 text-white backdrop-blur-2xl z-50 lg:hidden flex flex-col p-6 border-t border-white/10 overflow-y-auto"
+            className="fixed inset-x-0 bottom-0 top-[56px] md:top-[64px] bg-white/98 text-brand-charcoal backdrop-blur-2xl z-50 lg:hidden flex flex-col p-6 border-t border-brand-border/40 overflow-y-auto shadow-2xl"
           >
             <div className="flex flex-col gap-6 mt-6 items-center">
               {navLinks.map((link, idx) => {
@@ -123,7 +123,7 @@ export default function Navbar() {
                       className={`text-base font-sans font-bold uppercase tracking-widest ${
                         isActive
                           ? 'text-[#C28A46]'
-                          : 'text-white/80 hover:text-white'
+                          : 'text-brand-charcoal/80 hover:text-brand-charcoal'
                       }`}
                     >
                       {link.name}
